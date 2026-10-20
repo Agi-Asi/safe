@@ -22,7 +22,7 @@ People, research, films, video libraries and a daily news brief, all in one plac
 ![Routes](https://img.shields.io/badge/routes-8-0d0d12?style=flat-square)
 ![Updated](https://img.shields.io/badge/updated-daily-2ea043?style=flat-square)
 
-[Routes](#-routes) · [Screenshots](#-screenshots) · [Architecture](#-architecture) · [Data](#-by-the-numbers) · [Voices](#-in-their-own-words) · [Videos](#-videos) · [SEO & GEO](#-built-to-be-found) · [Run locally](#-run-locally) · [About](#-about)
+[Routes](#-routes) · [Screenshots](#-screenshots) · [Features](#-landing-page-features) · [Architecture](#-architecture) · [Data](#-by-the-numbers) · [Voices](#-in-their-own-words) · [Videos](#-videos) · [SEO & GEO](#-built-to-be-found) · [Run locally](#-run-locally) · [About](#-about)
 
 </div>
 
@@ -207,6 +207,114 @@ timeline
     2026 : SAFE launches
 ```
 
+## 🧩 Landing page features
+
+| Feature | What it does |
+|---|---|
+| 🌌 **Singularity hero** | Thousands of particles spiral into an event horizon that follows your cursor, over a drifting colour aurora |
+| 🔤 **Rotating focus word** | Cycles through alignment, interpretability, AI control, superintelligence and more |
+| 🗺 **Route cards** | Eight colour-coded cards with 3D tilt, cursor spotlight and a GitHub **Source** chip on each |
+| 🏛 **Six pillars** | Alignment, interpretability, control, evaluations, governance and the singularity, each linked to the right route |
+| 🗣 **Voices carousel** | Verbatim quotes with portraits and source links, auto-advancing |
+| 🍩 **People explorer** | Interactive donut + chips + search across all researchers by focus area |
+| 🧭 **Pick your path** | Tabs for beginners, researchers, policy people, creators and 10-minutes-a-day readers |
+| 🧠 **AI safety IQ quiz** | Eight questions with instant explanations and confetti for a good score |
+| 🐙 **Built in the open** | Live GitHub stars, forks and watchers, topics, copy-to-clone, repository map |
+| 📰 **Latest digest** | Pulls today's X Focus Digest headline live from the archive |
+| ⌨️ **Command palette** | `⌘K` / `Ctrl K` / `/` searches every route and researcher |
+
+### GitHub dock on every page
+
+Every SAFE page carries a floating dock (bottom left) with a link back to the hub, a **Source** button that opens that page's folder on GitHub, and a live star count. It is one tiny shared script, [`safe-gh.js`](safe-gh.js), so new pages get it with a single tag:
+
+```html
+<script src="/safe/safe-gh.js" defer></script>
+```
+
+## 🧠 Map of the hub
+
+```mermaid
+mindmap
+  root((SAFE))
+    People
+      Guardians of AI
+        173 profiles
+        776 quotes
+        807 interviews
+      Inside the Insiders
+        12 lab insiders
+        117 fact-checks
+    Watch
+      CONTROL film
+      AI Safety Cinema
+        Learning path
+        Quiz
+      SIGNAL
+        30 essential talks
+      Video Library
+        21 topics
+        175 explainers
+    Daily
+      X Focus Digest
+      Archive
+    Ideas
+      Alignment
+      Interpretability
+      AI control
+      Governance
+      Singularity
+```
+
+## 🗃 Data model
+
+```mermaid
+erDiagram
+    RESEARCHER ||--o{ QUOTE : says
+    RESEARCHER ||--o{ INTERVIEW : appears_in
+    RESEARCHER ||--o{ VIDEO : features_in
+    RESEARCHER }o--|| CATEGORY : belongs_to
+    VIDEO ||--o| TRANSCRIPT : has
+    TRANSCRIPT ||--|| SUMMARY : condenses_to
+    RESEARCHER {
+        string slug
+        string name
+        string current_role
+        string country
+    }
+    QUOTE {
+        string text
+        string context
+        url source_url
+    }
+    VIDEO {
+        string youtube_id
+        string kind
+        int duration
+    }
+```
+
+## ⌨️ Keyboard shortcuts
+
+| Keys | Action |
+|---|---|
+| `⌘ K` / `Ctrl K` / `/` | Open search on the landing page |
+| `↑` `↓` `Enter` | Move and open a result |
+| `Esc` | Close search |
+| `←` `→` | Previous / next quote |
+
+## 🧰 Tech stack
+
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Canvas](https://img.shields.io/badge/Canvas%202D-FF5A36?style=for-the-badge)
+![HLS](https://img.shields.io/badge/HLS%20video-8B5CF6?style=for-the-badge)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-222222?style=for-the-badge&logo=githubpages&logoColor=white)
+![schema.org](https://img.shields.io/badge/schema.org-JSON--LD-34D399?style=for-the-badge)
+
+Zero frameworks, zero trackers, zero build step on the client.
+
 ## 🔎 Built to be found
 
 | Layer | What's in place |
@@ -265,6 +373,24 @@ No dependencies and no build step. Every route is a self-contained static site, 
 ## 🤝 Contributing
 
 Spotted a wrong role, a dead link or a missing researcher? [Open an issue](https://github.com/Agi-Asi/safe/issues/new) with the source link. Corrections that come with a primary source are merged first.
+
+## 📣 Share
+
+[![Share on X](https://img.shields.io/badge/Share%20on-X-000000?style=for-the-badge&logo=x)](https://x.com/intent/post?text=SAFE%3A%20the%20open%20hub%20for%20AI%20safety%2C%20alignment%20and%20superintelligence&url=https%3A%2F%2Fagi-asi.github.io%2Fsafe%2F)
+[![Share on LinkedIn](https://img.shields.io/badge/Share%20on-LinkedIn-0A66C2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fagi-asi.github.io%2Fsafe%2F)
+[![Share on Reddit](https://img.shields.io/badge/Share%20on-Reddit-FF4500?style=for-the-badge&logo=reddit&logoColor=white)](https://www.reddit.com/submit?url=https%3A%2F%2Fagi-asi.github.io%2Fsafe%2F&title=SAFE%3A%20the%20open%20hub%20for%20AI%20safety)
+
+## 📚 Cite SAFE
+
+```bibtex
+@misc{adak2026safe,
+  author       = {Adak, Aniruddha},
+  title        = {SAFE: An Open Hub for AI Safety, Alignment and Superintelligence},
+  year         = {2026},
+  howpublished = {\url{https://agi-asi.github.io/safe/}},
+  note         = {GitHub: https://github.com/Agi-Asi/safe}
+}
+```
 
 ## 📜 Sources and credits
 
