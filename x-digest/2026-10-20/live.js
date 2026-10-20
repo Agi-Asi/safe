@@ -26,7 +26,7 @@
 
   /* ---------- live relative times ---------- */
   function tickTimes() {
-    $$("time[datetime]").forEach(function (t) { var ts = Date.parse(t.getAttribute("datetime")) / 1000; if (ts) t.textContent = rel(ts); });
+    $$("time[datetime]").forEach(function (t) { var ts = Date.parse(t.getAttribute("datetime")) / 1000; if (!ts) return; var r = rel(ts); if (t.textContent !== r) t.textContent = r; });
   }
   setInterval(tickTimes, 30000);
 
@@ -54,7 +54,7 @@
     while (inflight < 4 && queue.length) {
       (function (id) {
         inflight++;
-        fetch("https://api.fxtwitter.com/i/status/" + id).then(function (r) { return r.json(); }).then(function (j) { if (j && j.tweet) applyStats(id, j.tweet); })
+        fetch("https://api.fxtwitter.com/i/status/" + id, window.AbortSignal && AbortSignal.timeout ? { signal: AbortSignal.timeout(8000) } : undefined).then(function (r) { return r.json(); }).then(function (j) { if (j && j.tweet) applyStats(id, j.tweet); })
           .catch(function () {}).then(function () { inflight--; last[id] = Date.now(); pump(); });
       })(queue.shift());
     }
@@ -85,7 +85,12 @@
       v.parentNode.appendChild(b);
     });
   }
-  new MutationObserver(function (m) { var go = false; m.forEach(function (x) { if (x.addedNodes.length) go = true; }); if (go) { hook(); tickTimes(); } })
+  var hookT = null;
+  new MutationObserver(function (m) {
+    var go = false;
+    m.forEach(function (x) { [].forEach.call(x.addedNodes, function (n) { if (n.nodeType === 1 && !n.classList.contains("lv-expand") && !n.classList.contains("lv-delta")) go = true; }); });
+    if (go && !hookT) hookT = setTimeout(function () { hookT = null; hook(); tickTimes(); }, 60);
+  })
     .observe(document.body, { childList: true, subtree: true });
 
   /* ---------- lightbox ---------- */
