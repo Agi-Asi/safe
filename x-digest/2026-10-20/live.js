@@ -173,7 +173,7 @@
     }, true);
     $$(".x-tabs [role=tab]").forEach(function (b) { if (b !== tb) b.addEventListener("click", function () { view.hidden = true; tb.setAttribute("aria-selected", "false"); }); });
   }
-  var PAL = ["#7aa2ff", "#5ad1b3", "#f6c26b", "#ef7d8f", "#b38cff", "#62c3f0", "#a6d36b", "#9a978f"];
+  var PAL = ["#7aa2ff", "#5ad1b3", "#f6c26b", "#ff9f68", "#8ce99a", "#62c3f0", "#a6d36b", "#9a978f"];
   function donut(list) {
     var c = {}; list.forEach(function (p) { c[p.cat || "Other"] = (c[p.cat || "Other"] || 0) + 1; });
     var arr = Object.keys(c).map(function (k) { return [k, c[k]]; }).sort(function (a, b) { return b[1] - a[1]; });

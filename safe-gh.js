@@ -9,7 +9,7 @@ const src='https://github.com/'+REPO+(folder?'/tree/main/'+folder:'');
 const route=NAMES[seg[0]]||'SAFE';
 const css=`
 #safe-dock{position:fixed;left:16px;bottom:16px;z-index:2147483000;display:flex;align-items:center;gap:4px;padding:4px;border-radius:999px;font:600 13px/1 Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:#f3efe6;background:#0b0b10e6;backdrop-filter:blur(12px) saturate(1.4);-webkit-backdrop-filter:blur(12px);box-shadow:0 12px 40px -12px #000c,0 0 0 1px #ffffff1a;isolation:isolate;transition:transform .3s cubic-bezier(.2,.8,.2,1),opacity .3s}
-#safe-dock:before{content:"";position:absolute;inset:-1.5px;border-radius:inherit;z-index:-1;background:conic-gradient(from var(--sa,0deg),#ff5a36,#ffb547,#ffe08a,#4fe3ff,#8b5cf6,#ff4fa3,#ff5a36);animation:safe-spin 6s linear infinite;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;padding:1.5px}
+#safe-dock:before{content:"";position:absolute;inset:-1.5px;border-radius:inherit;z-index:-1;background:conic-gradient(from var(--sa,0deg),#ff5a36,#ffb547,#ffe08a,#4fe3ff,#3b82f6,#a3e635,#ff5a36);animation:safe-spin 6s linear infinite;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;padding:1.5px}
 @property --sa{syntax:'<angle>';inherits:false;initial-value:0deg}
 @keyframes safe-spin{to{--sa:360deg}}
 #safe-dock a{display:flex;align-items:center;gap:7px;padding:8px 12px;border-radius:999px;color:inherit;text-decoration:none;white-space:nowrap;transition:background .2s,color .2s}
@@ -17,8 +17,8 @@ const css=`
 #safe-dock a:focus-visible{outline:2px solid #ffb547;outline-offset:2px}
 #safe-dock svg{width:17px;height:17px;flex:none}
 #safe-dock .sd-home b{background:linear-gradient(100deg,#ffe08a,#ffb547 45%,#ff5a36);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:.14em}
-#safe-dock .sd-gh{background:linear-gradient(135deg,#24292f,#3b2a5c);}
-#safe-dock .sd-gh:hover{background:linear-gradient(135deg,#3b2a5c,#7c2d4f)}
+#safe-dock .sd-gh{background:linear-gradient(135deg,#24292f,#1f3a4d);}
+#safe-dock .sd-gh:hover{background:linear-gradient(135deg,#1f3a4d,#0f4c5c)}
 #safe-dock .sd-star{color:#ffd166}
 #safe-dock .sd-star span{color:#f3efe6;font-variant-numeric:tabular-nums}
 #safe-dock .sd-x{width:30px;justify-content:center;padding:8px 0;color:#a39f96}

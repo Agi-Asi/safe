@@ -212,7 +212,10 @@ timeline
 | Feature | What it does |
 |---|---|
 | 🌌 **Singularity hero** | Thousands of particles spiral into an event horizon that follows your cursor, over a drifting colour aurora |
-| 🔤 **Rotating focus word** | Cycles through alignment, interpretability, AI control, superintelligence and more |
+| 📅 **Today strip** | Researcher of the day, today's digest headline (fetched live) and a Surprise me button |
+| 🌗 **Dark / white themes** | One-tap toggle (or press `T`), remembered per device, follows your system setting by default |
+| 🧭 **Section dots** | Scroll-spy navigator on the right edge and live-highlighted nav links |
+| 📋 **Quote tools** | Copy any quote with its source, or post it straight to X |
 | 🗺 **Route cards** | Eight colour-coded cards with 3D tilt, cursor spotlight and a GitHub **Source** chip on each |
 | 🏛 **Six pillars** | Alignment, interpretability, control, evaluations, governance and the singularity, each linked to the right route |
 | 🗣 **Voices carousel** | Verbatim quotes with portraits and source links, auto-advancing |
@@ -301,6 +304,8 @@ erDiagram
 | `↑` `↓` `Enter` | Move and open a result |
 | `Esc` | Close search |
 | `←` `→` | Previous / next quote |
+| `T` | Toggle dark / white theme |
+| `R` | Jump to a random researcher |
 
 ## 🧰 Tech stack
 

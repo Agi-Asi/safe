@@ -160,7 +160,7 @@ let confRAF=0;
 function confetti(){
   stopConf();if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
   const c=document.createElement('canvas');c.id='conf';document.body.appendChild(c);const x=c.getContext('2d');c.width=innerWidth;c.height=innerHeight;
-  const cols=['#ffb547','#4fe3ff','#ffffff','#ff7ab6'],ps=Array.from({length:160},()=>({x:Math.random()*c.width,y:-20-Math.random()*c.height*.5,vx:(Math.random()-.5)*3,vy:2+Math.random()*3,r:Math.random()*6,s:4+Math.random()*5,c:cols[Math.random()*4|0]}));
+  const cols=['#ffb547','#4fe3ff','#ffffff','#a3e635'],ps=Array.from({length:160},()=>({x:Math.random()*c.width,y:-20-Math.random()*c.height*.5,vx:(Math.random()-.5)*3,vy:2+Math.random()*3,r:Math.random()*6,s:4+Math.random()*5,c:cols[Math.random()*4|0]}));
   const t0=performance.now();
   (function f(t){x.clearRect(0,0,c.width,c.height);ps.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.03;p.r+=.1;x.save();x.translate(p.x,p.y);x.rotate(p.r);x.fillStyle=p.c;x.fillRect(-p.s/2,-p.s/4,p.s,p.s/2);x.restore()});
     if(t-t0<4500)confRAF=requestAnimationFrame(f);else stopConf()})(t0);
