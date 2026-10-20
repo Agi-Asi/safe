@@ -13,10 +13,10 @@
   --chart-1: light-dark(#b1bcd2, #c3ccdd);
   --chart-2: light-dark(#607868, #8fa898);
   --chart-3: light-dark(#dbb691, #e2c39f);
-  --chart-4: light-dark(#a79fb8, #b9b2c9);
+  --chart-4: light-dark(#8fb0c9, #a5c3d9);
   --chart-5: light-dark(#d9c489, #e2d09e);
   --chart-6: light-dark(#7e9c9b, #96b3b2);
-  --chart-7: light-dark(#c9a3a8, #d6b5b9);
+  --chart-7: light-dark(#c9a98a, #d9bc9f);
   --chart-on-colour: #1d1d1f;                           /* text drawn on the seven colours, pale in both themes */
   --chart-mono: "GT Standard Mono", "Geist Mono", ui-monospace, monospace; /* every number on a chart */
 }
