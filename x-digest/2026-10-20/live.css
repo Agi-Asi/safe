@@ -190,3 +190,8 @@ html .x-progress__fill{background:linear-gradient(90deg,var(--lv-green),var(--lv
 .lv-foot a{color:var(--lv-ink);text-decoration:none;border-bottom:1px solid var(--lv-line2)}
 .lv-foot a:hover{border-color:var(--lv-accent);color:var(--lv-accent)}
 @media print{.x-bar,.lv-hbtn,.lv-top,.lv-lb{display:none!important}}
+/* Brief/feed cards: lift off the page in both themes */
+html .x-post,html .x-story{background:var(--lv-card);border:1px solid var(--lv-line);box-shadow:var(--lv-shadow)}
+html .x-post:hover,html .x-story:hover{border-color:var(--lv-line2)}
+html{--text-secondary:light-dark(#4f5056,#b4b2ab)}
+html .x-post .btn,html .x-story .btn{border-color:var(--lv-line2)}
