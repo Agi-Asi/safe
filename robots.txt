@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# AI and answer engines are welcome to read and cite SAFE
+User-agent: GPTBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://agi-asi.github.io/safe/sitemap.xml
+Sitemap: https://agi-asi.github.io/safe/ai-safety-researchers/sitemap.xml

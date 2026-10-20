@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CONTROL — Inside the race to keep superintelligence on our side</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400&family=Instrument+Serif:ital@0;1&display=swap"
+    />
+    <link rel="stylesheet" href="hark.css" />
+    <link rel="stylesheet" href="hark-hero.css" />
+    <style>
+      /* Design departure: a dark, cinematic streaming look. */
+      /* Dark-only: the cinematic look does not switch themes. */
+      :root, :root[data-theme] {
+        color-scheme: dark !important;
+        --fill-primary-on: #050607;
+        --fill-tertiary: #121519;
+        --x-teal: #2ee6d6;
+        --x-amber: #ffb547;
+        --x-glow: rgb(46 230 214 / 0.35);
+        --x-display: "Instrument Serif", Georgia, "Times New Roman", serif;
+      }
+      .nav .theme-btn { display: none; }
+      body {
+        background:
+          radial-gradient(1200px 600px at 80% -10%, color-mix(in srgb, var(--x-teal) 9%, transparent), transparent 70%),
+          radial-gradient(900px 500px at -10% 40%, color-mix(in srgb, var(--x-amber) 5%, transparent), transparent 70%),
+          var(--fill-primary-on);
+      }
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: 200;
+        pointer-events: none;
+        opacity: 0.07;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      }
+      .hero h1, .head h2, .x-feature__title {
+        font-family: var(--x-display);
+        font-weight: var(--weight-regular);
+        letter-spacing: -0.01em;
+        line-height: 1.02;
+      }
+      .hero h1 { font-size: clamp(44px, 7vw, 88px); }
+      .head h2 { font-size: clamp(32px, 4.4vw, 52px); }
+      .hero__eyebrow { letter-spacing: 0.3em; color: var(--x-teal); }
+      .head__eyebrow { color: var(--x-amber); letter-spacing: 0.12em; text-transform: uppercase; font: var(--type-tag); }
+      .stat__fig { font-family: var(--x-display); font-size: clamp(40px, 5vw, 60px); line-height: 1; color: var(--x-teal); }
+      .stat:first-child .stat__fig { color: var(--x-amber); }
+
+      .x-play {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        min-height: var(--tap);
+        padding: 6px 18px 6px 8px;
+        border: 0;
+        border-radius: var(--r-pill);
+        background: var(--x-teal);
+        color: #041412;
+        font: var(--type-label);
+        cursor: pointer;
+        box-shadow: 0 0 32px var(--x-glow);
+        transition: transform var(--dur-quick) var(--ease-out);
+      }
+      .x-play:hover { transform: scale(1.03); }
+      .x-play::before {
+        content: "";
+        width: 30px; height: 30px;
+        border-radius: 50%;
+        background: #041412 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 7l9 5-9 5z' fill='%232EE6D6'/%3E%3C/svg%3E") center / 18px no-repeat;
+      }
+      .hero .links { align-items: center; margin-top: 6px; }
+
+      /* Video cards: 16:9 rows */
+      .x-row {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: minmax(250px, calc((100% - 42px) / 4));
+        gap: 14px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding: 6px 2px 14px;
+        scrollbar-width: thin;
+      }
+      @media (max-width: 760px) { .x-row { grid-auto-columns: 78%; } }
+      .x-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 18px 14px; }
+      .x-card {
+        display: grid;
+        gap: 8px;
+        align-content: start;
+        padding: 0;
+        border: 0;
+        background: none;
+        color: inherit;
+        text-align: left;
+        font: inherit;
+        cursor: pointer;
+        scroll-snap-align: start;
+      }
+      .x-thumb {
+        position: relative;
+        aspect-ratio: 16 / 9;
+        border-radius: var(--r-s);
+        overflow: hidden;
+        background: var(--fill-tertiary);
+        border: 1px solid var(--stroke-secondary);
+        transition: box-shadow var(--dur-quick) ease, border-color var(--dur-quick) ease;
+      }
+      .x-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 600ms var(--ease-out); }
+      .x-thumb::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgb(0 0 0 / 0.55), transparent 55%);
+      }
+      .x-thumb::before {
+        content: "";
+        position: absolute;
+        z-index: 1;
+        left: 12px; bottom: 12px;
+        width: 36px; height: 36px;
+        border-radius: 50%;
+        background: rgb(5 6 7 / 0.6) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 7l9 5-9 5z' fill='%23F5F5F7'/%3E%3C/svg%3E") center / 20px no-repeat;
+        -webkit-backdrop-filter: var(--hark-blur);
+        backdrop-filter: var(--hark-blur);
+        border: 1px solid rgb(245 245 247 / 0.3);
+        transition: background-color var(--dur-quick) ease;
+      }
+      .x-card:hover .x-thumb img, .x-card:focus-visible .x-thumb img { transform: scale(1.08); }
+      .x-card:hover .x-thumb, .x-card:focus-visible .x-thumb { border-color: var(--x-teal); box-shadow: 0 0 0 1px var(--x-teal), 0 10px 40px var(--x-glow); }
+      .x-card:hover .x-thumb::before { background-color: var(--x-teal); }
+      .x-card__ch { font: var(--type-tag); color: var(--x-amber); letter-spacing: 0.04em; }
+      .x-card__title { font: var(--type-body-strong); text-wrap: pretty; }
+      @media (prefers-reduced-motion: reduce) { .x-thumb img, .x-play { transition: none; } .x-card:hover .x-thumb img { transform: none; } }
+
+      /* Featured film */
+      .x-feature {
+        display: grid;
+        grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+        gap: clamp(20px, 3vw, 40px);
+        align-items: center;
+        padding: clamp(12px, 1.6vw, 16px);
+        border-radius: var(--r-xl);
+        background: var(--fill-tertiary);
+        border: 1px solid var(--stroke-secondary);
+        margin-bottom: clamp(28px, 3vw, 40px);
+      }
+      .x-feature .x-thumb { border-radius: var(--r-l); }
+      .x-feature .x-thumb::before { width: 64px; height: 64px; left: 50%; top: 50%; bottom: auto; transform: translate(-50%, -50%); background-size: 32px; }
+      .x-feature__copy { display: grid; gap: 14px; padding-right: 12px; }
+      .x-feature__title { font-size: clamp(28px, 3.4vw, 42px); }
+      @media (max-width: 760px) { .x-feature { grid-template-columns: 1fr; } .x-feature__copy { padding: 0 8px 8px; } }
+      .x-rowhead { display: flex; align-items: baseline; gap: 10px; margin: 0 0 12px; font: var(--type-heading); }
+      .x-lib > * + * { margin-top: clamp(28px, 3vw, 40px); }
+
+      /* Quotes */
+      .x-quotes > div { border-left: 2px solid var(--x-amber); }
+      .x-quotes .quote { font-family: var(--x-display); font-size: clamp(22px, 2.4vw, 28px); font-weight: var(--weight-regular); line-height: 1.15; }
+      .x-quotes p:last-child { color: var(--text-secondary); font: var(--type-label); }
+
+      /* Library tools */
+      .x-tools { display: grid; gap: 14px; margin-bottom: clamp(24px, 3vw, 36px); }
+      .x-search {
+        width: 100%;
+        max-width: 560px;
+        min-height: 48px;
+        padding: 12px 18px 12px 44px;
+        border-radius: var(--r-pill);
+        border: 1px solid var(--stroke-primary);
+        background: var(--fill-tertiary) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a1a1a6' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='6'/%3E%3Cpath d='M20 20l-4.5-4.5'/%3E%3C/svg%3E") 16px center / 18px no-repeat;
+        color: var(--text-primary);
+        font: var(--type-body);
+      }
+      .x-search::placeholder { color: var(--text-secondary); }
+      .x-search:focus { outline: 2px solid var(--x-teal); outline-offset: 2px; }
+      .x-filters { display: flex; flex-wrap: wrap; gap: 8px; }
+      .x-filter {
+        min-height: 36px;
+        padding: 6px 14px;
+        border-radius: var(--r-pill);
+        border: 1px solid var(--stroke-primary);
+        background: transparent;
+        color: var(--text-secondary);
+        font: var(--type-tag);
+        cursor: pointer;
+      }
+      .x-filter:hover { color: var(--text-primary); }
+      .x-filter[aria-pressed="true"] { background: var(--x-teal); border-color: var(--x-teal); color: #041412; }
+      @media (pointer: coarse), (max-width: 599px) { .x-filter { min-height: var(--tap); } }
+      .x-empty { color: var(--text-secondary); }
+
+      /* Platforms */
+      .x-dir > div { display: grid; gap: 10px; align-content: start; }
+      .x-dir h3 { margin-bottom: 0; }
+      .x-dir .pill { justify-self: start; color: var(--x-teal); }
+      .x-dir p { color: var(--text-secondary); font-size: var(--size-small); }
+      .x-dir .btn { justify-self: start; margin-top: 4px; }
+      .x-paths h3 { color: var(--x-teal); }
+
+      /* Theater */
+      .x-theater {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        display: grid;
+        place-items: center;
+        padding: clamp(12px, 3vw, 40px);
+        background: rgb(2 3 4 / 0.94);
+        -webkit-backdrop-filter: blur(20px);
+        backdrop-filter: blur(20px);
+        color: #f5f5f7;
+      }
+      .x-theater[hidden] { display: none; }
+      .x-theater__box { width: min(1280px, 100%, calc((100vh - 140px) * 16 / 9)); display: grid; gap: 14px; }
+      .x-theater__bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+      .x-theater__title { font: var(--type-heading); }
+      .x-theater__title small { display: block; font: var(--type-tag); color: #ffb547; margin-bottom: 4px; }
+      .x-close {
+        flex: none;
+        width: var(--tap); height: var(--tap);
+        border-radius: 50%;
+        border: 1px solid rgb(245 245 247 / 0.28);
+        background: #1d1f24;
+        color: #f5f5f7;
+        font-size: 22px;
+        cursor: pointer;
+      }
+      .x-close:hover { background: #2c2f36; }
+      .x-screen {
+        position: relative;
+        aspect-ratio: 16 / 9;
+        border-radius: var(--r-l);
+        overflow: hidden;
+        background: #000;
+        box-shadow: 0 0 80px rgb(46 230 214 / 0.18);
+      }
+      .x-screen iframe, .x-screen > img { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; object-fit: cover; }
+      .x-poster-play {
+        position: absolute;
+        left: 50%; top: 50%;
+        transform: translate(-50%, -50%);
+        width: clamp(72px, 10vw, 112px); height: clamp(72px, 10vw, 112px);
+        border-radius: 50%;
+        background: #2ee6d6 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 6.5l9.5 5.5L9 17.5z' fill='%23041412'/%3E%3C/svg%3E") 54% center / 50% no-repeat;
+        box-shadow: 0 0 0 10px rgb(46 230 214 / 0.18), 0 0 60px rgb(46 230 214 / 0.5);
+      }
+      .x-poster-play:hover { transform: translate(-50%, -50%) scale(1.06); }
+      .x-yt {
+        position: absolute;
+        right: 14px; bottom: 12px;
+        padding: 4px 10px;
+        border-radius: var(--r-pill);
+        background: rgb(5 6 7 / 0.6);
+        color: rgb(245 245 247 / 0.8);
+        font: var(--type-caption);
+        text-decoration: none;
+      }
+      .x-yt:hover { color: #f5f5f7; }
+    </style>
+  </head>
+  <body>
+    <div class="page" id="top">
+      <header class="nav glass" data-auto></header>
+      <main class="main">
+        <section class="hero">
+          <img class="hero__img" src="hero.jpg" alt="A lone figure faces a giant glowing neural sphere held by restraint rings in a dark data center" />
+          <div class="hero__copy">
+            <p class="hero__eyebrow">CONTROL</p>
+            <h1>Can we control what we're building?</h1>
+            <p class="hero__sub">The people inside OpenAI, Google DeepMind and Anthropic say the odds of losing control are real. Here's every place they're talking about it.</p>
+            <div class="links">
+              <a class="btn" href="#insiders">Watch the insiders</a>
+              <button class="x-play" type="button" data-v="B1ZQHAzAS6g">Play the 4-minute film</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="stats" aria-label="The odds, from inside">
+          <div class="stat"><span class="stat__fig">~50%</span><span class="stat__label">Geoffrey Irving's extinction estimate (ex-OpenAI, ex-DeepMind)</span></div>
+          <div class="stat"><span class="stat__fig">≥10%</span><span class="stat__label">Neel Nanda, Google DeepMind</span></div>
+          <div class="stat"><span class="stat__fig">12</span><span class="stat__label">Insiders interviewed by Palisade Research (Sept 29, 2026)</span></div>
+        </section>
+
+        <section class="section" id="insiders" data-nav="Insiders">
+          <div class="head">
+            <p class="head__eyebrow">From inside the labs</p>
+            <h2>Twelve insiders, on the record.</h2>
+            <p class="head__sub">Palisade Research's frominside.ai series, released Sept 29, 2026 under CC BY 4.0.</p>
+          </div>
+          <div id="feature"></div>
+          <div class="x-row" id="insider-row" aria-label="Insider interviews"></div>
+          <div class="cards x-quotes">
+            <div><p class="quote">"The chance of human extinction is about a coin flip, in my view."</p><p>Geoffrey Irving</p></div>
+            <div><p class="quote">"I would put at least a ten percent chance that it causes human extinction, and that is ridiculously high."</p><p>Neel Nanda</p></div>
+            <div><p class="quote">"This is exactly as dangerous as it sounds and must not be allowed to happen."</p><p>Daniel Kokotajlo</p></div>
+            <div><p class="quote">"If models become way more capable, but we are still this bad at shaping their motivations, then we might just lose control over them."</p><p>Mary Phuong</p></div>
+          </div>
+          <div class="links"><a class="btn" href="https://frominside.ai/" target="_blank" rel="noopener">frominside.ai</a></div>
+        </section>
+
+        <section class="section" id="library" data-nav="Library">
+          <div class="head">
+            <p class="head__eyebrow">The library</p>
+            <h2>Forty-one films on alignment, control and risk.</h2>
+            <p class="head__sub">Search, or pick a theme. Every card plays here.</p>
+          </div>
+          <div class="x-tools">
+            <input class="x-search" id="lib-search" type="search" placeholder="Search titles, channels, people" aria-label="Search the library" />
+            <div class="x-filters" id="lib-filters" role="group" aria-label="Filter by theme"></div>
+          </div>
+          <div class="x-lib" id="lib" aria-live="polite"></div>
+        </section>
+
+        <section class="section" id="platforms" data-nav="Platforms">
+          <div class="head">
+            <p class="head__eyebrow">Platforms like frominside.ai</p>
+            <h2>Where the conversation lives.</h2>
+            <p class="head__sub">Channels, podcasts, indexes, forums and essays.</p>
+          </div>
+          <div class="cards x-dir">
+            <div><h3>frominside.ai</h3><span class="pill">Interview series</span><p>Palisade's interviews with current and former OpenAI, DeepMind and Anthropic staff.</p><a class="btn" href="https://frominside.ai/" target="_blank" rel="noopener">Visit</a></div>
+            <div><h3>Palisade Research</h3><span class="pill">YouTube + podcast</span><p>Shutdown-resistance research and insider interviews.</p><a class="btn" href="https://www.youtube.com/@PalisadeResearch" target="_blank" rel="noopener">Visit</a></div>
+            <div><h3>AI In Context (80,000 Hours)</h3><span class="pill">YouTube</span><p>Cinematic deep-dives: AI 2027, the Hugging Face incident.</p><a class="btn" href="https://www.youtube.com/@AI_In_Context" target="_blank" rel="noopener">Visit</a></div>
+            <div><h3>80,000 Hours Podcast</h3><span class="pill">Podcast</span><p>Long interviews with alignment researchers.</p><a class="btn" href="https://80000hours.org/podcast/" target="_blank" rel="noopener">Visit</a></div>
+            <div><h3>Robert Miles AI Safety</h3><span class="pill">YouTube</span><p>The classic alignment explainer channel.</p><a class="btn" href="https://www.youtube.com/@RobertMilesAI" target="_blank" rel="noopener">Visit</a></div>
+            <div><h3>Rational Animations</h3><span class="pill">YouTube</span><p>Animated alignment research stories.</p><a class="btn" href="https://www.youtube.com/@RationalAnimations" target="_blank" rel="noopener">Visit</a></div>
+            <div><h3>Species | Documenting AGI</h3><span class="pill">YouTube</span><p>Mini-documentaries on AI risk.</p><a class="btn" href="https://www.youtube.com/@AISpecies" target="_blank" rel="noopener">Visit</a></div>
+            <div><h3>FAR.AI</h3><span class="pill">YouTube</span><p>Talks from alignment workshops.</p><a class="btn" href="https://www.youtube.com/@FARAIResearch" target="_blank" rel="noopener">Visit</a></div>
+            <div><h3>AXRP</h3><span class="pill">Podcast</span><p>Technical interviews with AI x-risk researchers.</p><a class="btn" href="https://axrp.net/" target="_blank" rel="noopener">Visit</a></div>
+            <div><h3>Future of Life Institute Podcast</h3><span class="pill">Podcast</span><p>Existential-risk experts and policy.</p><a class="btn" href="https://futureoflife.org/podcast/" target="_blank" rel="noopener">Visit</a></div>
+            <div><h3>Dwarkesh Podcast</h3><span class="pill">Podcast</span><p>Deep interviews with lab leaders and researchers.</p><a class="btn" href="https://www.dwarkesh.com/" target="_blank" rel="noopener">Visit</a></div>
+            <div><h3>Doom Debates</h3><span class="pill">YouTube</span><p>Liron Shapira's debates on superintelligence risk.</p><a class="btn" href="https://www.youtube.com/@DoomDebates" target="_blank" rel="noopener">Visit</a></div>
+            <div><h3>The AI Risk Network</h3><span class="pill">YouTube</span><p>John Sherman makes AI risk a kitchen-table talk.</p><a class="btn" href="https://www.youtube.com/@TheAIRiskNetwork" target="_blank" rel="noopener">Visit</a></div>
+            <div><h3>Lethal Intelligence</h3><span class="pill">YouTube</span><p>Explainers on AGI dangers.</p><a class="btn" href="https://www.youtube.com/@lethal-intelligence" target="_blank" rel="noopener">Visit</a></div>
+            <div><h3>Siliconversations</h3><span class="pill">YouTube</span><p>Stick-figure AI safety explainers.</p><a class="btn" href="https://www.youtube.com/@Siliconversations" target="_blank" rel="noopener">Visit</a></div>
+            <div><h3>AI Explained</h3><span class="pill">YouTube</span><p>Careful analysis of frontier model news.</p><a class="btn" href="https://www.youtube.com/@aiexplained-official" target="_blank" rel="noopener">Visit</a></div>
+            <div><h3>The Inside View</h3><span class="pill">YouTube</span><p>Interviews and clips on AI risk.</p><a class="btn" href="https://www.youtube.com/c/TheInsideView" target="_blank" rel="noopener">Visit</a></div>
+            <div><h3>Dr Waku</h3><span class="pill">YouTube</span><p>AI researcher on alignment and containment.</p><a class="btn" href="https://www.youtube.com/@DrWaku" target="_blank" rel="noopener">Visit</a></div>
+            <div><h3>The Cognitive Revolution</h3><span class="pill">Podcast</span><p>Nathan Labenz interviews AI builders.</p><a class="btn" href="https://www.cognitiverevolution.ai/" target="_blank" rel="noopener">Visit</a></div>
+            <div><h3>AI Safety Talks</h3><span class="pill">YouTube</span><p>Lecture recordings (Hubinger, Nanda).</p><a class="btn" href="https://www.youtube.com/@AISafetyTalks" target="_blank" rel="noopener">Visit</a></div>
+            <div><h3>Center for AI Safety</h3><span class="pill">YouTube</span><p>The full AI Safety, Ethics &amp; Society course.</p><a class="btn" href="https://www.youtube.com/@centerforaisafety" target="_blank" rel="noopener">Visit</a></div>
+            <div><h3>AI Safety Playlist</h3><span class="pill">Curated playlist</span><p>A living YouTube playlist from AISafety.com.</p><a class="btn" href="https://www.youtube.com/playlist?list=PLWQikawCP4UFM_ziLf9X2rcOLCSbqisRE" target="_blank" rel="noopener">Visit</a></div>
+            <div><h3>agi.fyi Best Videos</h3><span class="pill">Curated guide</span><p>A pro scriptwriter's picks on AI risk.</p><a class="btn" href="https://agi.fyi/best-videos" target="_blank" rel="noopener">Visit</a></div>
+            <div><h3>AISafety.com Media Channels</h3><span class="pill">Directory</span><p>82 channels, podcasts and newsletters.</p><a class="btn" href="https://aisafety.com/media-channels" target="_blank" rel="noopener">Visit</a></div>
+            <div><h3>LLM Bento</h3><span class="pill">Video index</span><p>Lab insider videos indexed by speaker.</p><a class="btn" href="https://www.llm-bento.com/" target="_blank" rel="noopener">Visit</a></div>
+            <div><h3>Post-Cutoff</h3><span class="pill">Video index</span><p>Annotated AI videos and events.</p><a class="btn" href="https://postcutoff.com/" target="_blank" rel="noopener">Visit</a></div>
+            <div><h3>UCSB AI Safety Resources</h3><span class="pill">Watch list</span><p>A curated starter video path.</p><a class="btn" href="https://ucsbaisafety.org/resources" target="_blank" rel="noopener">Visit</a></div>
+            <div><h3>AI Alignment Forum</h3><span class="pill">Forum</span><p>Where researchers publish alignment work.</p><a class="btn" href="https://alignmentforum.org/" target="_blank" rel="noopener">Visit</a></div>
+            <div><h3>LessWrong</h3><span class="pill">Forum</span><p>The broader AI safety discussion hub.</p><a class="btn" href="https://www.lesswrong.com/" target="_blank" rel="noopener">Visit</a></div>
+            <div><h3>AI 2027</h3><span class="pill">Scenario</span><p>The forecast everyone references.</p><a class="btn" href="https://ai-2027.com/" target="_blank" rel="noopener">Visit</a></div>
+            <div><h3>The Compendium</h3><span class="pill">Essay</span><p>The case for extinction risk, plainly.</p><a class="btn" href="https://www.thecompendium.ai/" target="_blank" rel="noopener">Visit</a></div>
+            <div><h3>If Anyone Builds It, Everyone Dies</h3><span class="pill">Book</span><p>Yudkowsky &amp; Soares.</p><a class="btn" href="https://ifanyonebuildsit.com/" target="_blank" rel="noopener">Visit</a></div>
+            <div><h3>MIRI: The Problem</h3><span class="pill">Essay</span><p>Why MIRI expects extinction by default.</p><a class="btn" href="https://intelligence.org/the-problem/" target="_blank" rel="noopener">Visit</a></div>
+            <div><h3>AI Safety for Fleshy Humans</h3><span class="pill">Comic series</span><p>An illustrated intro to alignment.</p><a class="btn" href="https://aisafety.dance/" target="_blank" rel="noopener">Visit</a></div>
+            <div><h3>Machine Learning Street Talk</h3><span class="pill">YouTube</span><p>Long-form talks with AI researchers on alignment and control.</p><a class="btn" href="https://www.youtube.com/@MachineLearningStreetTalk" target="_blank" rel="noopener">Visit</a></div>
+            <div><h3>Lex Fridman Podcast</h3><span class="pill">Podcast</span><p>Long interviews with leading AI scientists and safety researchers.</p><a class="btn" href="https://lexfridman.com/podcast/" target="_blank" rel="noopener">Visit</a></div>
+            <div><h3>Computerphile</h3><span class="pill">YouTube</span><p>Accessible CS explainers, many featuring Rob Miles on AI safety.</p><a class="btn" href="https://www.youtube.com/@Computerphile" target="_blank" rel="noopener">Visit</a></div>
+            <div><h3>AISafety.info</h3><span class="pill">Guide</span><p>Rob Miles' Q&amp;A explainer site, with a categorized video guide.</p><a class="btn" href="https://aisafety.info/" target="_blank" rel="noopener">Visit</a></div>
+            <div><h3>Apart Research</h3><span class="pill">Research lab</span><p>AI safety hackathons, talks and research.</p><a class="btn" href="https://www.apartresearch.com/" target="_blank" rel="noopener">Visit</a></div>
+            <div><h3>GovAI</h3><span class="pill">Think tank</span><p>Advanced-AI governance talks and research.</p><a class="btn" href="https://www.governance.ai/" target="_blank" rel="noopener">Visit</a></div>
+            <div><h3>AE Alignment Podcast</h3><span class="pill">Podcast</span><p>Conversations with alignment researchers at AE Studio.</p><a class="btn" href="https://open.spotify.com/show/2F7ZjPrMN2V8T39LAOStkc" target="_blank" rel="noopener">Visit</a></div>
+          </div>
+        </section>
+
+        <section class="section" id="paths" data-nav="Paths">
+          <div class="head">
+            <p class="head__eyebrow">Paths to control</p>
+            <h2>Six ways researchers hope to stay in charge.</h2>
+          </div>
+          <figure class="band">
+            <img src="lab.jpg" alt="An atmospheric research lab" />
+          </figure>
+          <div class="cards x-paths">
+            <div><h3>Alignment</h3><p>Make the AI actually want what we want: RLHF, constitutional training, scalable oversight.</p></div>
+            <div><h3>AI Control</h3><p>Assume it might be misaligned; monitor, sandbox and limit it so it can't cause harm anyway. Redwood Research's agenda.</p></div>
+            <div><h3>Interpretability</h3><p>Read the model's internals to catch deception. Mechanistic interpretability, Neel Nanda's field.</p></div>
+            <div><h3>Evaluations</h3><p>Test for dangerous capabilities, scheming and shutdown resistance before release: METR, Apollo, Palisade.</p></div>
+            <div><h3>Corrigibility</h3><p>Build systems that accept correction and shutdown. MIRI's CAST proposal by Max Harms.</p></div>
+            <div><h3>Governance &amp; pacing</h3><p>Compute tracking, international agreements, "pacing the frontier" so understanding keeps up.</p></div>
+          </div>
+        </section>
+
+        <section class="section" id="about" data-nav="About">
+          <div class="head"><h2>About this hub.</h2></div>
+          <div class="prose">
+            <p>Curated October 2026 by Hark for Aniruddha. Interview videos © their creators; frominside.ai videos CC BY 4.0.</p>
+          </div>
+        </section>
+      </main>
+      <footer class="foot">
+        <p>Videos play inline when opened directly.</p>
+        <nav aria-label="Back to sections" data-auto></nav>
+        <a class="badge" href="https://agi-asi.github.io/safe/" rel="author"><span>SAFE · by Aniruddha Adak</span></a>
+      </footer>
+    </div>
+
+    <div class="x-theater" id="theater" role="dialog" aria-modal="true" aria-labelledby="theater-title" hidden>
+      <div class="x-theater__box">
+        <div class="x-theater__bar">
+          <p class="x-theater__title" id="theater-title"></p>
+          <button class="x-close" id="theater-close" type="button" aria-label="Close video">×</button>
+        </div>
+        <div class="x-screen" id="screen"></div>
+      </div>
+    </div>
+
+    <script src="hark.js"></script>
+    <script src="s1.js"></script>
+  </body>
+</html>

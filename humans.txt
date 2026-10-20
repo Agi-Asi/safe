@@ -1,0 +1,13 @@
+/* TEAM */
+Curator & developer: Aniruddha Adak
+Role: AI Agent Engineer, full-stack developer, AI filmmaker
+From: Kolkata, West Bengal, India
+GitHub: https://github.com/Agi-Asi
+YouTube: https://www.youtube.com/@ai-asi
+Site: https://aniruddhaadak.tech
+
+/* SITE */
+Name: SAFE: AI Safety, Alignment & Superintelligence Hub
+URL: https://agi-asi.github.io/safe/
+Standards: HTML5, CSS3, schema.org JSON-LD
+Hosting: GitHub Pages

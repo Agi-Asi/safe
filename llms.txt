@@ -1,0 +1,42 @@
+# SAFE
+
+> SAFE (https://agi-asi.github.io/safe/) is an open hub by Aniruddha Adak (Kolkata, India) on AI safety, AI alignment, interpretability, superintelligence and the technological singularity. It gathers 173 researcher profiles with verbatim sourced quotes, curated films and video libraries, and a daily AI news digest. Source: https://github.com/Agi-Asi/safe
+
+## Sections
+- [The Guardians of AI](https://agi-asi.github.io/safe/ai-safety-researchers/): Who's who of AI safety and alignment: 173 researchers and public voices, 684 verbatim sourced quotes, 807 interviews and 688 verified videos, fact-checked.
+- [Inside the Insiders](https://agi-asi.github.io/safe/frominside/): Who to trust on frominside.ai: the lab insiders interviewed by Palisade Research, with fact-checks, answers, motion explainers and side-by-side comparisons.
+- [CONTROL](https://agi-asi.github.io/safe/control-superintelligence/): Inside the race to keep superintelligence on our side. Twelve insiders from OpenAI, Google DeepMind and Anthropic on the real odds of losing control.
+- [AI Safety Cinema](https://agi-asi.github.io/safe/ai-safety-cinema/): The most important conversation of our century, as a cinema. Watch, understand, decide: curated documentaries, debates and talks on AI risk.
+- [AI Safety Video Library](https://agi-asi.github.io/safe/ai-safety-library/): A watch-and-learn hub: 21 topics and 175 hand-picked explainers, from harms today to agents gone rogue, scored from full-transcript reviews.
+- [SIGNAL](https://agi-asi.github.io/safe/signal/): The focused AI video library. Only the signal: 30 essential talks, about 38 hours, on research, alignment and safety. No feeds, no algorithm.
+- [X Focus Digest](https://agi-asi.github.io/safe/x-focus-digest/): Your AI timeline minus the scroll: today's must-reads, news and posts from X, ranked and summarised so you can read what matters in ten minutes.
+- [Digest Archive](https://agi-asi.github.io/safe/x-digest/): Every edition of the X Focus Digest, one Page per day, kept forever so you can trace how the AI story unfolded.
+
+## Field guide
+- AI safety: The field that works to make advanced AI systems reliable, controllable and beneficial, and to prevent accidents, misuse and catastrophic outcomes.
+- Alignment: Getting an AI system to actually pursue the goals and values its designers and users intend, including in situations nobody tested.
+- Interpretability: Reverse-engineering what happens inside a neural network: which features and circuits it uses and why it produces a given output.
+- AI control: Designing safeguards, monitoring and protocols so that even a model that might be misaligned cannot cause serious harm.
+- Superintelligence: A hypothetical AI that greatly exceeds the best humans across virtually every cognitive domain, a term popularised by Nick Bostrom (2014).
+- Technological singularity: The idea, from I. J. Good and Vernor Vinge, that self-improving machine intelligence could trigger change so fast that the future becomes impossible to predict.
+- Recursive self-improvement: An AI system improving the very process that builds AI, so each generation designs a better next one: the engine behind an "intelligence explosion".
+- AI governance: The laws, standards, institutions and international agreements that shape how frontier AI is built, evaluated and deployed.
+
+## FAQ
+- Q: What is SAFE?
+  A: SAFE is an open, free hub by Aniruddha Adak that gathers the people, research, films, videos and daily news of AI safety, alignment and superintelligence into one place, so anyone can understand the most important technology debate of our time.
+- Q: Who are the most influential AI safety researchers?
+  A: The Guardians of AI atlas profiles 173 of them, including Geoffrey Hinton, Yoshua Bengio, Stuart Russell, Paul Christiano, Chris Olah, Jan Leike, Neel Nanda, Ajeya Cotra and Helen Toner, with verbatim sourced quotes and verified interviews for each.
+- Q: What is the difference between AI safety and AI alignment?
+  A: AI safety is the broad field of preventing harm from AI, from everyday failures to catastrophic risk. Alignment is one core part of it: making sure an AI system genuinely pursues the goals people intend.
+- Q: What is superintelligence and why does it worry researchers?
+  A: Superintelligence is AI that far surpasses humans in nearly every cognitive task. Researchers worry that if such a system is not aligned and cannot be controlled, humans could lose the ability to correct it.
+- Q: What is the technological singularity?
+  A: It is the hypothesised point where self-improving AI accelerates progress so sharply that the future becomes unpredictable. The idea traces back to I. J. Good (1965) and Vernor Vinge (1993).
+- Q: How can I start learning about AI safety?
+  A: Start with the AI Safety Video Library's seven-step path, then explore the Guardians of AI atlas to see who is working on what, and read the X Focus Digest daily to keep up with the news.
+- Q: Is SAFE free and open source?
+  A: Yes. Everything is published openly on GitHub at github.com/Agi-Asi/safe and served free on GitHub Pages. Quotes and videos link to their original sources.
+
+## Credits
+- Curated and built by Aniruddha Adak, AI Agent Engineer (GitHub: https://github.com/Agi-Asi, YouTube: https://www.youtube.com/@ai-asi). Last updated 2026-10-20.

@@ -1,0 +1,15 @@
+{
+  "name": "The Guardians of AI — Who's Who of AI Safety & Alignment",
+  "short_name": "Guardians of AI",
+  "description": "A curated, fact-checked who's who of 97 AI safety and alignment researchers, with verbatim sourced quotes, interviews and verified videos.",
+  "start_url": "https://agi-asi.github.io/safe/ai-safety-researchers/",
+  "scope": "https://agi-asi.github.io/safe/ai-safety-researchers/",
+  "display": "standalone",
+  "lang": "en",
+  "background_color": "#0B0F1A",
+  "theme_color": "#0B0F1A",
+  "icons": [
+    { "src": "https://agi-asi.github.io/safe/ai-safety-researchers/apple-touch-icon.png", "sizes": "180x180", "type": "image/png", "purpose": "any" },
+    { "src": "https://agi-asi.github.io/safe/ai-safety-researchers/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
