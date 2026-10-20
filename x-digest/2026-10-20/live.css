@@ -195,3 +195,12 @@ html .x-post,html .x-story{background:var(--lv-card);border:1px solid var(--lv-l
 html .x-post:hover,html .x-story:hover{border-color:var(--lv-line2)}
 html{--text-secondary:light-dark(#4f5056,#b4b2ab)}
 html .x-post .btn,html .x-story .btn{border-color:var(--lv-line2)}
+/* v2.1 polish */
+html .x-bar .lv-icon+.theme-btn,html .x-bar .lv-icon{margin-left:2px}
+html .x-bar .theme-btn{margin-left:6px}
+html .x-tabs{max-width:100%}
+html .x-tabs button{padding:8px 13px}
+html .x-progress__track{background:light-dark(rgba(20,22,28,.12),rgba(255,255,255,.14))}
+.lv-icon:active{transform:scale(.94)}
+.lv-2>.lv-card{height:100%}
+.lv-2{align-items:stretch}
