@@ -278,7 +278,7 @@ Quotes, interviews and videos belong to their original authors, publishers and c
 [![GitHub](https://img.shields.io/badge/GitHub-aniruddhaadak80-181717?style=flat-square&logo=github)](https://github.com/aniruddhaadak80)
 [![YouTube](https://img.shields.io/badge/YouTube-AI%20AGI%20ASI-FF0000?style=flat-square&logo=youtube&logoColor=white)](https://www.youtube.com/@ai-asi)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-aniruddha--adak-0A66C2?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/aniruddha-adak)
-[![X](https://img.shields.io/badge/X-@aniruddhadak-000000?style=flat-square&logo=x)](https://x.com/aniruddhadak)
+[![X](https://img.shields.io/badge/X-@asi369__-000000?style=flat-square&logo=x)](https://x.com/asi369_)
 [![DEV](https://img.shields.io/badge/DEV-aniruddhaadak-0A0A0A?style=flat-square&logo=devdotto)](https://dev.to/aniruddhaadak)
 
 ## ⭐ Star history

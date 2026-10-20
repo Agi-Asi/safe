@@ -39,4 +39,4 @@
   A: Yes. Everything is published openly on GitHub at github.com/Agi-Asi/safe and served free on GitHub Pages. Quotes and videos link to their original sources.
 
 ## Credits
-- Curated and built by Aniruddha Adak, AI Agent Engineer (GitHub: https://github.com/Agi-Asi, YouTube: https://www.youtube.com/@ai-asi). Last updated 2026-10-20.
+- Curated and built by Aniruddha Adak, AI Agent Engineer (GitHub: https://github.com/Agi-Asi, YouTube: https://www.youtube.com/@ai-asi, X: https://x.com/asi369_). Last updated 2026-10-20.
