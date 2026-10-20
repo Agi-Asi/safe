@@ -352,7 +352,7 @@ footer a:hover{color:var(--ink)}
 .qtools{display:flex;gap:8px;margin-left:8px}
 .qtools button,.qtools a{height:44px;padding:0 14px;border-radius:999px;border:1px solid var(--line2);background:transparent;color:var(--ink);cursor:pointer;font:600 13px var(--sans);display:flex;align-items:center}
 .qtools button:hover,.qtools a:hover{border-color:var(--amb)}
-.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);z-index:90;background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:999px;font:600 14px var(--sans);opacity:0;transition:.3s;pointer-events:none}
+.toast{position:fixed!important;left:50%;bottom:28px;transform:translate(-50%,20px);z-index:90;background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:999px;font:600 14px var(--sans);opacity:0;transition:.3s;pointer-events:none}
 .toast.on{opacity:1;transform:translate(-50%,0)}
 /* light theme */
 [data-theme=light]{--bg:#f7f5f0;--bg2:#efebe3;--ink:#16140f;--mut:#57534b;--dim:#8a857b;--line:#1a160f14;--line2:#1a160f26;--card:#ffffff;--glow:#c2410c;--amb:#d97706;--hot:#e8461f;color-scheme:light}
@@ -859,14 +859,14 @@ const toast=m=>{const t=$('toast');t.textContent=m;t.classList.add('on');clearTi
  const navs=[...document.querySelectorAll('.nav nav a')];const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const id=e.target.id;d.querySelectorAll('a').forEach(a=>a.classList.toggle('on',a.dataset.id===id));navs.forEach(a=>a.style.color=a.getAttribute('href')==='#'+id?'var(--amb)':'')}}),{rootMargin:'-45% 0px -50% 0px'});S.forEach(x=>so.observe(x));
  d.querySelector('[data-id=top]').onclick=e=>{e.preventDefault();scrollTo({top:0,behavior:RM?'auto':'smooth'})}}
 /* quote copy + share */
-$('qcopy').onclick=()=>{const v=V[qi];navigator.clipboard?.writeText(`"${v.text}" — ${v.name}`+(v.src?` (${v.src})`:'')).then(()=>{toast('Quote copied');const b=$('qcopy');b.classList.add('ok');b.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>';setTimeout(()=>{b.classList.remove('ok');b.innerHTML=CPI},1500)})};
+$('qcopy').onclick=()=>{const v=V[qi];navigator.clipboard?.writeText(`"${v.text}" — ${v.name}`+(v.src?` (${v.src})`:'')).then(()=>{toast('Quote copied');const b=$('qcopy');b.classList.add('ok');b.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>';setTimeout(()=>{b.classList.remove('ok');b.innerHTML=CPI},2200)})};
 {const upd=()=>{const v=V[qi];if(v)$('qshare').href='https://x.com/intent/post?text='+encodeURIComponent(`"${v.text.slice(0,200)}" — ${v.name}`)+'&url='+encodeURIComponent(location.origin+location.pathname)};setInterval(upd,1000);upd()}
 /* keys: T theme, R random */
 addEventListener('keydown',e=>{if(e.metaKey||e.ctrlKey||e.altKey||/INPUT|TEXTAREA/.test(document.activeElement.tagName)||$('pal').classList.contains('on'))return;const k=e.key.toLowerCase();if(k==='t')$('thm').click();else if(k==='r')window.__rnd();else if(k==='arrowright'&&document.activeElement===document.body&&isVis($('voices')))show(qi+1);else if(k==='arrowleft'&&document.activeElement===document.body&&isVis($('voices')))show(qi-1)});
 function isVis(el){const r=el.getBoundingClientRect();return r.top<innerHeight*.7&&r.bottom>innerHeight*.3}
 
 /* ===== v4 ===== */
-const CPI=$('qcopy').innerHTML;
+const CPI=$('qcopy').innerHTML;document.body.appendChild($('toast'));
 {const Wv=JSON.parse($('watch-data').textContent);let wi=0;const pl=$('plist2'),pv=$('player');
  const th=id=>`https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
  pl.innerHTML=Wv.map((v,i)=>`<button class="vi" data-i="${i}" type="button"><img src="${th(v.id)}" alt="" loading="lazy" width="120" height="68"><div><small>${esc(v.k)}</small><b>${esc(v.t)}</b><span>${esc(v.c)} · ${esc(v.d)}</span></div></button>`).join('');
