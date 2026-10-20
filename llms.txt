@@ -3,7 +3,7 @@
 > SAFE (https://agi-asi.github.io/safe/) is an open hub by Aniruddha Adak (Kolkata, India) on AI safety, AI alignment, interpretability, superintelligence and the technological singularity. It gathers 173 researcher profiles with verbatim sourced quotes, curated films and video libraries, and a daily AI news digest. Source: https://github.com/Agi-Asi/safe
 
 ## Sections
-- [The Guardians of AI](https://agi-asi.github.io/safe/ai-safety-researchers/): Who's who of AI safety and alignment: 173 researchers and public voices, 684 verbatim sourced quotes, 807 interviews and 688 verified videos, fact-checked.
+- [The Guardians of AI](https://agi-asi.github.io/safe/ai-safety-researchers/): Who's who of AI safety and alignment: 173 researchers and public voices, 776 verbatim sourced quotes, 807 interviews and 688 verified videos, fact-checked.
 - [Inside the Insiders](https://agi-asi.github.io/safe/frominside/): Who to trust on frominside.ai: the lab insiders interviewed by Palisade Research, with fact-checks, answers, motion explainers and side-by-side comparisons.
 - [CONTROL](https://agi-asi.github.io/safe/control-superintelligence/): Inside the race to keep superintelligence on our side. Twelve insiders from OpenAI, Google DeepMind and Anthropic on the real odds of losing control.
 - [AI Safety Cinema](https://agi-asi.github.io/safe/ai-safety-cinema/): The most important conversation of our century, as a cinema. Watch, understand, decide: curated documentaries, debates and talks on AI risk.

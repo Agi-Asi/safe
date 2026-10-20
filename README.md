@@ -10,7 +10,7 @@
 
 ![Researchers](https://img.shields.io/badge/researchers-173-ffb547?style=flat-square)
 ![Videos](https://img.shields.io/badge/verified%20videos-688-ff5a36?style=flat-square)
-![Quotes](https://img.shields.io/badge/sourced%20quotes-684-f3efe6?style=flat-square)
+![Quotes](https://img.shields.io/badge/sourced%20quotes-776-f3efe6?style=flat-square)
 ![Interviews](https://img.shields.io/badge/interviews-807-a39f96?style=flat-square)
 ![Hosted on GitHub Pages](https://img.shields.io/badge/hosted-GitHub%20Pages-0d0d12?style=flat-square&logo=github)
 
@@ -26,7 +26,7 @@ Every quote is verbatim and linked to its source. Every video is verified. Every
 
 | # | Route | What it is |
 |---|---|---|
-| 01 | [**The Guardians of AI**](https://agi-asi.github.io/safe/ai-safety-researchers/) · `/ai-safety-researchers/` | Who's who of AI safety and alignment: 173 researchers and public voices, 684 verbatim sourced quotes, 807 interviews and 688 verified videos, with a theater, comparisons, trust scores and timelines. |
+| 01 | [**The Guardians of AI**](https://agi-asi.github.io/safe/ai-safety-researchers/) · `/ai-safety-researchers/` | Who's who of AI safety and alignment: 173 researchers and public voices, 776 verbatim sourced quotes, 807 interviews and 688 verified videos, with a theater, comparisons, trust scores and timelines. |
 | 02 | [**Inside the Insiders**](https://agi-asi.github.io/safe/frominside/) · `/frominside/` | Who to trust on frominside.ai: lab insiders interviewed by Palisade Research, with fact-checks, answers, motion explainers and comparisons. |
 | 03 | [**CONTROL**](https://agi-asi.github.io/safe/control-superintelligence/) · `/control-superintelligence/` | Inside the race to keep superintelligence on our side: twelve insiders from OpenAI, Google DeepMind and Anthropic on the odds of losing control. |
 | 04 | [**AI Safety Cinema**](https://agi-asi.github.io/safe/ai-safety-cinema/) · `/ai-safety-cinema/` | The most important conversation of our century as a cinema: documentaries, debates and talks on AI risk. |
