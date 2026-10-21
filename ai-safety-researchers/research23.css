@@ -1,0 +1,40 @@
+/* Round 23 — Research Archive. Add-only styles. */
+.ra-stats { margin-bottom: 16px; }
+.ra-years { display: flex; align-items: flex-end; gap: 3px; height: 92px; padding: 6px 0 0; margin: 4px 0 18px; overflow-x: auto; }
+.ra-yb { all: unset; box-sizing: border-box; flex: 1 0 22px; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 4px; cursor: pointer; }
+.ra-yb__bar { width: 100%; height: var(--h); min-height: 3px; border-radius: 4px 4px 1px 1px; background: color-mix(in srgb, var(--fill-primary) 35%, transparent); transition: background 0.2s; }
+.ra-yb:hover .ra-yb__bar, .ra-yb:focus-visible .ra-yb__bar, .ra-yb.is-on .ra-yb__bar { background: var(--fill-primary); }
+.ra-yb:focus-visible { outline: 2px solid var(--fill-primary); outline-offset: 2px; border-radius: 4px; }
+.ra-yb__y { font: 11px/1 "Geist Mono", ui-monospace, monospace; color: var(--text-secondary); }
+.ra-tools .x-tools__row { flex-wrap: wrap; }
+.ra-row2 { align-items: center; gap: 10px; }
+.ra-sp { flex: 1; }
+.ra-count { font: var(--type-tag, 500 13px/1.3 Geist, sans-serif); color: var(--text-secondary); }
+.ra-list { list-style: none; margin: 16px 0 0; padding: 0; display: grid; gap: 12px; }
+.ra-item article { padding: 16px 18px; border-radius: var(--r-l, 16px); background: var(--fill-primary-on); border: 1px solid color-mix(in srgb, var(--text-primary) 10%, transparent); transition: border-color 0.2s, transform 0.2s; }
+.ra-item article:hover { border-color: color-mix(in srgb, var(--text-primary) 28%, transparent); }
+.ra-meta { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: center; font: var(--type-tag, 500 12px/1.3 Geist, sans-serif); color: var(--text-secondary); }
+.ra-tp { padding: 2px 9px; border-radius: 999px; font-weight: 600; background: color-mix(in srgb, var(--fill-primary) 12%, transparent); color: var(--text-primary); }
+.ra-tp--interpretability { background: rgba(124, 92, 255, 0.16); }
+.ra-tp--alignment { background: rgba(43, 179, 129, 0.16); }
+.ra-tp--evals { background: rgba(255, 170, 51, 0.18); }
+.ra-tp--governance { background: rgba(64, 140, 255, 0.16); }
+.ra-tp--red-teaming, .ra-tp--robustness { background: rgba(255, 92, 92, 0.15); }
+.ra-tp--model-welfare { background: rgba(255, 105, 180, 0.15); }
+.ra-best { color: #8a6d00; background: rgba(255, 213, 74, 0.28); padding: 2px 8px; border-radius: 999px; }
+.ra-title { margin: 8px 0 4px; font: var(--type-h4, 600 17px/1.35 Geist, sans-serif); }
+.ra-title a { color: var(--text-primary); text-decoration: none; }
+.ra-title a:hover, .ra-title a:focus-visible { text-decoration: underline; text-underline-offset: 3px; }
+.ra-authors { margin: 0 0 6px; font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+.ra-au--p { all: unset; cursor: pointer; color: var(--text-primary); font-weight: 600; text-decoration: underline dotted; text-underline-offset: 3px; }
+.ra-au--p:hover, .ra-au--p:focus-visible { text-decoration-style: solid; outline: none; }
+.ra-sum { margin: 0 0 10px; font-size: 14px; line-height: 1.55; color: var(--text-primary); opacity: 0.88; }
+.ra-acts { display: flex; flex-wrap: wrap; gap: 6px; }
+.ra-acts .btn { min-height: 32px; padding: 0 12px; font-size: 13px; }
+.ra-acts .btn[aria-pressed="true"] { background: var(--fill-primary); color: var(--text-primary-on); }
+.ra-empty { padding: 28px; text-align: center; color: var(--text-secondary); border-radius: 16px; border: 1px dashed color-mix(in srgb, var(--text-primary) 20%, transparent); }
+.ra-more { display: flex; justify-content: center; margin-top: 16px; }
+.ra-more .btn[hidden] { display: none; }
+.x23-pbtn { margin: 10px 0; }
+@media (max-width: 640px) { .ra-item article { padding: 14px; } .ra-years { height: 70px; } }
+@media print { .ra-tools, .ra-acts, .ra-more, .ra-years { display: none !important; } }
