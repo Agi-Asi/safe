@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Launchpad — Aniruddha Adak</title>
+    <meta name="description" content="Launchpad: Aniruddha Adak's mission control. A live deadline radar with countdowns for AI safety fellowships, hackathons and exams, a 30-day game plan, money moves and the AI safety career ladder. Built in Kolkata." />
+    <meta name="author" content="Aniruddha Adak" />
+    <meta name="keywords" content="Aniruddha Adak, Launchpad, AI safety fellowships, AI safety career, hackathons, deadlines, AI agent engineer, Kolkata" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#07070a" />
+    <link rel="canonical" href="https://agi-asi.github.io/safe/launchpad/" />
+    <link rel="icon" href="../icon.svg" type="image/svg+xml" />
+    <meta name="geo.region" content="IN-WB" />
+    <meta name="geo.placename" content="Kolkata" />
+    <meta name="geo.position" content="22.5726;88.3639" />
+    <meta name="ICBM" content="22.5726, 88.3639" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="SAFE" />
+    <meta property="og:title" content="Launchpad — Aniruddha Adak" />
+    <meta property="og:description" content="Launchpad: Aniruddha Adak's mission control. A live deadline radar with countdowns for AI safety fellowships, hackathons and exams, a 30-day game plan, money moves and the AI safety career ladder. Built in Kolkata." />
+    <meta property="og:url" content="https://agi-asi.github.io/safe/launchpad/" />
+    <meta property="og:image" content="https://agi-asi.github.io/safe/launchpad/hero.jpg" />
+    <meta property="og:image:width" content="1376" />
+    <meta property="og:image:height" content="768" />
+    <meta property="og:locale" content="en_IN" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@asi369_" />
+    <meta name="twitter:title" content="Launchpad — Aniruddha Adak" />
+    <meta name="twitter:description" content="Launchpad: Aniruddha Adak's mission control. A live deadline radar with countdowns for AI safety fellowships, hackathons and exams, a 30-day game plan, money moves and the AI safety career ladder. Built in Kolkata." />
+    <meta name="twitter:image" content="https://agi-asi.github.io/safe/launchpad/hero.jpg" />
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "@id": "https://agi-asi.github.io/safe/launchpad/#page", "url": "https://agi-asi.github.io/safe/launchpad/", "name": "Launchpad — Aniruddha Adak", "description": "Launchpad: Aniruddha Adak's mission control. A live deadline radar with countdowns for AI safety fellowships, hackathons and exams, a 30-day game plan, money moves and the AI safety career ladder. Built in Kolkata.", "inLanguage": "en", "dateModified": "2026-10-21", "isPartOf": {"@type": "WebSite", "@id": "https://agi-asi.github.io/safe/#website", "name": "SAFE", "url": "https://agi-asi.github.io/safe/"}, "primaryImageOfPage": "https://agi-asi.github.io/safe/launchpad/hero.jpg", "author": {"@type": "Person", "@id": "https://agi-asi.github.io/safe/#aniruddha", "name": "Aniruddha Adak", "jobTitle": "AI Agent Engineer and full-stack developer", "address": {"@type": "PostalAddress", "addressLocality": "Kolkata", "addressRegion": "West Bengal", "addressCountry": "IN"}, "sameAs": ["https://github.com/Agi-Asi", "https://github.com/aniruddhaadak80", "https://www.youtube.com/@ai-asi", "https://www.linkedin.com/in/aniruddha-adak", "https://x.com/asi369_", "https://dev.to/aniruddhaadak"]}, "breadcrumb": {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SAFE", "item": "https://agi-asi.github.io/safe/"}, {"@type": "ListItem", "position": 2, "name": "Launchpad", "item": "https://agi-asi.github.io/safe/launchpad/"}]}}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400&display=swap"
+    />
+    <link rel="stylesheet" href="site.css" />
+    <link rel="stylesheet" href="hero.css" />
+    <style>
+      :root {
+        --x-cyan: #3fd6ea;
+        --x-orange: #ff8a3d;
+        --x-gold: #f2c14e;
+        --x-green: #3ddc84;
+        --x-mono: "Geist Mono", ui-monospace, monospace;
+      }
+      /* Dark only: the page is built for the night desk. */
+      #theme-btn { display: none; }
+
+      .x-accent { color: var(--x-cyan); }
+
+      /* Deadline radar */
+      .x-radar-sum { display: flex; flex-wrap: wrap; gap: 8px 20px; font: var(--type-label); color: var(--text-secondary); }
+      .x-radar-sum b { color: var(--text-primary); font-weight: var(--weight-bold); }
+      .x-key { display: inline-flex; align-items: center; gap: 6px; }
+      .x-key::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--x-k); }
+      .x-radar { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+      .x-rad {
+        --x-u: var(--x-cyan);
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 16px 28px;
+        align-items: center;
+        padding: 20px 24px;
+        border-radius: var(--r-m);
+        background: var(--fill-tertiary);
+        border-left: 3px solid var(--x-u);
+        transition: opacity var(--dur-quick) var(--ease-out);
+      }
+      .x-rad[data-urgency="soon"] { --x-u: var(--x-gold); }
+      .x-rad[data-urgency="now"] { --x-u: var(--x-orange); }
+      .x-rad[data-urgency="closed"] { --x-u: var(--stroke-primary); }
+      .x-rad.is-done { --x-u: var(--x-green); opacity: 0.62; }
+      .x-rad.is-done h3 { text-decoration: line-through; text-decoration-color: var(--x-green); }
+      .x-rad h3 { font: var(--type-heading); margin: 4px 0 8px; }
+      .x-rad__when { font: var(--type-tag); color: var(--x-u); }
+      .x-rad__meta { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 8px; }
+      .x-rad__note { font-size: var(--size-small); color: var(--text-secondary); max-width: 60ch; }
+      .x-rad__side { display: grid; justify-items: end; gap: 10px; text-align: right; }
+      .x-count { display: flex; gap: 10px; font-family: var(--x-mono); font-variant-numeric: tabular-nums; color: var(--x-u); }
+      .x-count span { display: grid; justify-items: center; min-width: 2.6ch; font-size: var(--size-figure); line-height: 1; }
+      .x-count small { font: var(--type-caption); color: var(--text-secondary); margin-top: 6px; }
+      .x-count--closed { font: var(--type-label); color: var(--text-secondary); }
+      .x-toggle {
+        display: inline-flex; align-items: center; gap: 6px;
+        min-height: 30px; padding: 5px 12px;
+        border-radius: var(--r-s);
+        background: var(--fill-primary-on); color: var(--text-primary);
+        border: 1px solid var(--stroke-primary);
+        font: var(--type-tag); cursor: pointer;
+      }
+      .x-toggle::before { content: ""; width: 10px; height: 10px; border-radius: 3px; box-shadow: inset 0 0 0 1.5px var(--text-secondary); }
+      .x-toggle[aria-pressed="true"] { border-color: var(--x-green); color: var(--x-green); }
+      .x-toggle[aria-pressed="true"]::before { background: var(--x-green); box-shadow: none; }
+      .x-toggle:hover { box-shadow: inset 0 0 0 100px var(--hover-wash); }
+      @media (pointer: coarse), (max-width: 599px) { .x-toggle { min-height: var(--tap); padding-inline: 14px; } }
+      @media (max-width: 700px) {
+        .x-rad { grid-template-columns: minmax(0, 1fr); padding: 18px 18px; }
+        .x-rad__side { justify-items: start; text-align: left; }
+      }
+      #x-hero-count { font-family: var(--x-mono); color: var(--x-orange); font-variant-numeric: tabular-nums; }
+
+      /* Career ladder */
+      .x-ladder { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+      .x-ladder li { position: relative; display: grid; align-content: start; gap: 10px; padding: 20px 22px; border-radius: var(--r-m); background: var(--fill-tertiary); }
+      .x-ladder li:not(:last-child)::after {
+        content: "\2192"; position: absolute; right: -11px; top: 50%; transform: translateY(-50%);
+        width: 22px; height: 22px; display: grid; place-items: center; border-radius: 50%;
+        background: var(--fill-primary-on); color: var(--x-cyan); font: var(--type-tag); z-index: 1;
+      }
+      .x-ladder__num { font-family: var(--x-mono); font-size: var(--size-caption); color: var(--x-gold); }
+      .x-ladder h3 { font: var(--type-heading); }
+      .x-ladder li:last-child { box-shadow: inset 0 0 0 1px var(--x-green); }
+      @media (max-width: 760px) {
+        .x-ladder { grid-template-columns: minmax(0, 1fr); }
+        .x-ladder li:not(:last-child)::after { content: "\2193"; right: auto; left: 22px; top: auto; bottom: -11px; transform: none; }
+      }
+
+      /* One move now */
+      .x-move { display: grid; gap: 20px; justify-items: start; padding: clamp(24px, 4vw, 40px); border-radius: var(--r-l); background: var(--fill-tertiary); }
+      .x-move__out { font: var(--type-display); color: var(--x-gold); min-height: 2.6em; max-width: 24ch; text-wrap: balance; }
+      .x-move__out.is-empty { color: var(--text-secondary); }
+      .x-move__btn {
+        min-height: var(--tap); padding: 10px 20px;
+        border-radius: var(--r-pill); border: 0; cursor: pointer;
+        background: var(--x-cyan); color: var(--fill-primary-on);
+        font: var(--type-label);
+      }
+      .x-move__btn:hover { box-shadow: inset 0 0 0 100px var(--hover-wash-primary-on); }
+
+      .x-quote { font: var(--type-heading); color: var(--text-primary); margin-bottom: 4px; }
+    </style>
+  </head>
+  <body>
+    <div class="page" id="top">
+      <header class="nav glass" data-auto></header>
+      <main class="main">
+        <section class="hero">
+          <img class="hero__img" src="hero.jpg" width="1376" height="768" fetchpriority="high" alt="A developer's desk at night overlooking Kolkata and the Howrah Bridge, neural nets on the screens" />
+          <div class="hero__copy">
+            <p class="hero__eyebrow">Mission control · Aniruddha Adak</p>
+            <h1>Launchpad</h1>
+            <p class="hero__sub">Ship in public. Get paid. Make AI safe.</p>
+            <p class="hero__meta">AI Agent Engineer &amp; full-stack developer · 23 · Kolkata · B.Tech CSE, Budge Budge Institute of Technology, class of 2026 · open-source contributor, AI filmmaker, YouTube creator</p>
+          </div>
+          <aside class="callout" aria-label="Next step">
+            <p class="callout__head">Next step</p>
+            <p class="callout__lead"><strong>DISPATCH fellowship ($2,000) closes Thu 22 Oct 2026, 5:29 PM IST — submit today.</strong></p>
+            <p class="fineprint">Time left: <span id="x-hero-count">calculating…</span></p>
+            <a class="btn" href="#radar">Open the radar</a>
+          </aside>
+          <p class="hero__credit">Night shift over the Howrah Bridge</p>
+        </section>
+
+        <section class="stats">
+          <div class="stat"><span class="stat__fig">200+</span><span class="stat__label">PRs per Hacktoberfest (2024 &amp; 2025)</span></div>
+          <div class="stat"><span class="stat__fig">~13k</span><span class="stat__label">LinkedIn followers</span></div>
+          <div class="stat"><span class="stat__fig">27</span><span class="stat__label">AI apps shipped in 45 days</span></div>
+        </section>
+
+        <section class="section" id="radar" data-nav="Radar">
+          <div class="head">
+            <p class="head__eyebrow">Live deadline radar</p>
+            <h2>Everything he is chasing, soonest first, so nothing paid slips past.</h2>
+            <p class="head__sub">Countdowns tick against exact IST times. Ticks stay on this visit only.</p>
+          </div>
+          <div class="x-radar-sum">
+            <span id="x-sum"><b>9</b> on the radar</span>
+            <span class="x-key" style="--x-k: var(--x-orange)">Under 3 days</span>
+            <span class="x-key" style="--x-k: var(--x-gold)">Under 14 days</span>
+            <span class="x-key" style="--x-k: var(--x-cyan)">Later</span>
+            <span class="x-key" style="--x-k: var(--x-green)">Done</span>
+          </div>
+          <ol class="x-radar" id="x-radar">
+            <li class="x-rad" data-at="2026-10-22T17:29:00+05:30">
+              <div>
+                <p class="x-rad__when">Closes · Thu 22 Oct 2026, 5:29 PM IST</p>
+                <h3>DISPATCH Fellowship</h3>
+                <p class="x-rad__meta"><span class="pill">$2,000</span> <span class="chip chip--solid">Submit today</span></p>
+                <p class="x-rad__note">Application pack already drafted.</p>
+              </div>
+              <div class="x-rad__side">
+                <div class="x-count" aria-hidden="true"></div>
+                <div class="links"><button class="x-toggle" type="button" aria-pressed="false">Done</button></div>
+              </div>
+            </li>
+            <li class="x-rad" data-at="2026-10-26T18:30:00+05:30">
+              <div>
+                <p class="x-rad__when">Decision expected · Mon 26 Oct 2026, 6:30 PM IST</p>
+                <h3>Meta Global AI Developer Hackathon</h3>
+                <p class="x-rad__meta"><span class="pill">Indie track</span> <span class="chip">Pending</span></p>
+                <p class="x-rad__note">Applied with the AgentShield idea.</p>
+              </div>
+              <div class="x-rad__side">
+                <div class="x-count" aria-hidden="true"></div>
+                <div class="links"><button class="x-toggle" type="button" aria-pressed="false">Done</button></div>
+              </div>
+            </li>
+            <li class="x-rad" data-at="2026-10-26T23:59:00+05:30">
+              <div>
+                <p class="x-rad__when">Deadline · Mon 26 Oct 2026, 11:59 PM IST</p>
+                <h3>IISc PhD application</h3>
+                <p class="x-rad__meta"><span class="pill">Optional path</span></p>
+              </div>
+              <div class="x-rad__side">
+                <div class="x-count" aria-hidden="true"></div>
+                <div class="links"><button class="x-toggle" type="button" aria-pressed="false">Done</button></div>
+              </div>
+            </li>
+            <li class="x-rad" data-at="2026-11-01T23:59:00+05:30">
+              <div>
+                <p class="x-rad__when">Apply by · Sun 1 Nov 2026, 11:59 PM IST</p>
+                <h3>BlueDot Technical AI Safety course</h3>
+                <p class="x-rad__meta"><span class="pill">Free</span></p>
+                <p class="x-rad__note">The first rung of the AI safety ladder.</p>
+              </div>
+              <div class="x-rad__side">
+                <div class="x-count" aria-hidden="true"></div>
+                <div class="links"><a class="btn" href="https://bluedot.org" target="_blank" rel="noopener">BlueDot</a><button class="x-toggle" type="button" aria-pressed="false">Done</button></div>
+              </div>
+            </li>
+            <li class="x-rad" data-at="2026-11-02T17:29:00+05:30">
+              <div>
+                <p class="x-rad__when">Closes · 23:59 AoE Sun 1 Nov = Mon 2 Nov 2026, 5:29 PM IST</p>
+                <h3>Pivotal AI Safety Research Fellowship, London</h3>
+                <p class="x-rad__meta"><span class="pill">£15,000–£18,000 stipend + travel</span> <span class="pill">£1,800/month housing</span> <span class="pill">Compute</span></p>
+                <p class="x-rad__note">18 Jan–30 Apr 2027 at LISA.</p>
+              </div>
+              <div class="x-rad__side">
+                <div class="x-count" aria-hidden="true"></div>
+                <div class="links"><a class="btn" href="https://www.pivotal-research.org/fellowships/ai-safety-fellowship" target="_blank" rel="noopener">Pivotal</a><button class="x-toggle" type="button" aria-pressed="false">Done</button></div>
+              </div>
+            </li>
+            <li class="x-rad" data-at="2026-11-10T23:59:00+05:30">
+              <div>
+                <p class="x-rad__when">Shuts down · Tue 10 Nov 2026, 11:59 PM IST</p>
+                <h3>CineV shuts down</h3>
+                <p class="x-rad__note">Export any storyboards and videos before then.</p>
+              </div>
+              <div class="x-rad__side">
+                <div class="x-count" aria-hidden="true"></div>
+                <div class="links"><button class="x-toggle" type="button" aria-pressed="false">Done</button></div>
+              </div>
+            </li>
+            <li class="x-rad" data-at="2026-11-27T00:00:00+05:30">
+              <div>
+                <p class="x-rad__when">Starts · Fri 27 Nov 2026, 12:00 AM IST</p>
+                <h3>Apart Research Agent Attribution Hackathon</h3>
+                <p class="x-rad__meta"><span class="pill">Online 27–29 Nov 2026</span> <span class="pill">$2,000 cash prizes</span></p>
+              </div>
+              <div class="x-rad__side">
+                <div class="x-count" aria-hidden="true"></div>
+                <div class="links"><a class="btn" href="https://apartresearch.com/sprints/agent-attribution-2026" target="_blank" rel="noopener">Apart sprint</a><button class="x-toggle" type="button" aria-pressed="false">Done</button></div>
+              </div>
+            </li>
+            <li class="x-rad" data-at="2026-11-29T09:00:00+05:30">
+              <div>
+                <p class="x-rad__when">Exam · Sun 29 Nov 2026, 9:00 AM IST</p>
+                <h3>CAT exam</h3>
+                <p class="x-rad__meta"><span class="pill">Optional</span></p>
+              </div>
+              <div class="x-rad__side">
+                <div class="x-count" aria-hidden="true"></div>
+                <div class="links"><button class="x-toggle" type="button" aria-pressed="false">Done</button></div>
+              </div>
+            </li>
+            <li class="x-rad" data-at="2027-02-06T09:00:00+05:30">
+              <div>
+                <p class="x-rad__when">Window opens · Sat 6 Feb 2027, 9:00 AM IST</p>
+                <h3>GATE 2027</h3>
+                <p class="x-rad__meta"><span class="pill">Runs 6–21 Feb 2027</span> <span class="pill">Optional</span></p>
+              </div>
+              <div class="x-rad__side">
+                <div class="x-count" aria-hidden="true"></div>
+                <div class="links"><button class="x-toggle" type="button" aria-pressed="false">Done</button></div>
+              </div>
+            </li>
+          </ol>
+        </section>
+
+        <section class="section" id="plan" data-nav="Plan">
+          <div class="head">
+            <p class="head__eyebrow">The 30-day game plan</p>
+            <h2>Four weeks from applications to a shipped, paid result.</h2>
+            <p class="head__sub">22 Oct to 18 Nov 2026.</p>
+          </div>
+          <div class="steps">
+            <article class="step">
+              <div class="step__intro"><p class="step__num">01</p><p class="step__eyebrow">22–28 Oct</p></div>
+              <div>
+                <h3>Submit and set up</h3>
+                <ul>
+                  <li>Submit DISPATCH.</li>
+                  <li>Finish the BlueDot and Pivotal applications.</li>
+                  <li>Pick one AI safety mini-project in agent evals, AI control or red-teaming.</li>
+                </ul>
+              </div>
+            </article>
+            <article class="step">
+              <div class="step__intro"><p class="step__num">02</p><p class="step__eyebrow">29 Oct–4 Nov</p></div>
+              <div>
+                <h3>Pitch Pivotal, write in public</h3>
+                <ul>
+                  <li>Submit Pivotal. Pitch: agent-security work like AgentShield, OpenClaw security audits, and merged PRs into gemini-cli, hermes-agent and cognee.</li>
+                  <li>Publish a LessWrong / Alignment Forum post about the mini-project.</li>
+                </ul>
+              </div>
+            </article>
+            <article class="step">
+              <div class="step__intro"><p class="step__num">03</p><p class="step__eyebrow">5–11 Nov</p></div>
+              <div>
+                <h3>Open-source it and film it</h3>
+                <ul>
+                  <li>Turn the project into an open-source repo and a YouTube explainer on AI AGI ASI.</li>
+                  <li>Export CineV work.</li>
+                  <li>Pitch 3 sponsors for the channel.</li>
+                </ul>
+              </div>
+            </article>
+            <article class="step">
+              <div class="step__intro"><p class="step__num">04</p><p class="step__eyebrow">12–18 Nov</p></div>
+              <div>
+                <h3>Line up the next wave</h3>
+                <ul>
+                  <li>Form a plan for Apart's Agent Attribution hackathon (27–29 Nov).</li>
+                  <li>Apply to SPAR / MATS-style programmes as they open.</li>
+                  <li>Ship one paid agent-engineering gig.</li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="money" data-nav="Money">
+          <div class="head">
+            <p class="head__eyebrow">Money moves</p>
+            <h2>Five ways the work pays while the safety career grows.</h2>
+          </div>
+          <div class="cards">
+            <div>
+              <h3>YouTube sponsorships</h3>
+              <p class="quote">Keep a one-page rate card ready.</p>
+              <p>Already done: a paid Higgsfield AI partnership and a GoLogin ad-buy inquiry.</p>
+            </div>
+            <div>
+              <h3>Freelance agent engineering</h3>
+              <p class="quote">LangGraph · CrewAI · RAG</p>
+              <p>Builds through his <a class="link" href="https://aniruddha-agency.vercel.app" target="_blank" rel="noopener">agency of one</a>.</p>
+            </div>
+            <div>
+              <h3>Hackathon prizes</h3>
+              <p class="quote">$2,000 Apart pool</p>
+              <ul>
+                <li>Apart Agent Attribution</li>
+                <li>Meta hackathon</li>
+                <li>Cerebral Valley listings</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Fellowship stipends</h3>
+              <p class="quote">£15–18k + $2,000</p>
+              <ul>
+                <li>Pivotal £15–18k</li>
+                <li>DISPATCH $2,000</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Referral</h3>
+              <p class="quote">$1,000</p>
+              <p>Pivotal pays this if someone he refers gets accepted.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="ladder" data-nav="Ladder">
+          <div class="head">
+            <p class="head__eyebrow">Career ladder</p>
+            <h2>Engineer who ships public evidence beats credentials.</h2>
+          </div>
+          <ol class="x-ladder">
+            <li><span class="x-ladder__num">Rung 1</span><h3>BlueDot</h3></li>
+            <li><span class="x-ladder__num">Rung 2</span><h3>ARENA</h3></li>
+            <li><span class="x-ladder__num">Rung 3</span><h3>SPAR / MATS / LASR</h3></li>
+            <li><span class="x-ladder__num">Rung 4</span><h3>Anthropic Fellows / lab research-engineer roles</h3></li>
+          </ol>
+        </section>
+
+        <section class="section" id="universe" data-nav="Links">
+          <div class="head">
+            <p class="head__eyebrow">His universe</p>
+            <h2>Every project and profile, one tap away.</h2>
+          </div>
+          <div class="cards">
+            <div>
+              <h3>SAFE projects</h3>
+              <ul>
+                <li><a class="link" href="https://agi-asi.github.io/safe/" target="_blank" rel="noopener">SAFE hub</a></li>
+                <li><a class="link" href="https://agi-asi.github.io/safe/ai-career-compass/" target="_blank" rel="noopener">AI Career Compass</a></li>
+                <li><a class="link" href="https://agi-asi.github.io/safe/ai-safety-researchers/" target="_blank" rel="noopener">Guardians of AI</a></li>
+                <li><a class="link" href="https://agi-asi.github.io/safe/ai-safety-cinema/" target="_blank" rel="noopener">AI Safety Cinema</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3>Code &amp; writing</h3>
+              <ul>
+                <li><a class="link" href="https://github.com/aniruddhaadak80" target="_blank" rel="noopener">GitHub</a></li>
+                <li><a class="link" href="https://dev.to/aniruddhaadak" target="_blank" rel="noopener">DEV</a></li>
+                <li><a class="link" href="https://aniruddha-adak.vercel.app" target="_blank" rel="noopener">Portfolio</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3>Social</h3>
+              <ul>
+                <li><a class="link" href="https://x.com/asi369_" target="_blank" rel="noopener">X · @asi369_</a></li>
+                <li><a class="link" href="https://www.linkedin.com/in/aniruddha-adak" target="_blank" rel="noopener">LinkedIn</a></li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="move" data-nav="Move">
+          <div class="head">
+            <p class="head__eyebrow">One move now</p>
+            <h2>Stuck? Take one small action.</h2>
+          </div>
+          <div class="x-move">
+            <p class="x-move__out is-empty" id="x-move-out" aria-live="polite">Press the button for your next move.</p>
+            <button class="x-move__btn" id="x-move-btn" type="button">One move now</button>
+          </div>
+        </section>
+      </main>
+      <footer class="foot">
+        <div>
+          <p class="x-quote">“The future is not something that happens to us. We build it.”</p>
+          <p>Made for and by <a class="link" href="https://github.com/Agi-Asi" target="_blank" rel="noopener">Aniruddha Adak</a> · Kolkata · part of <a class="link" href="../">SAFE</a></p>
+        </div>
+        <nav aria-label="Back to sections" data-auto></nav>
+      </footer>
+    </div>
+    <script src="s1.js"></script>
+    <script src="s2.js"></script>
+  </body>
+</html>
