@@ -101,6 +101,82 @@
         .x-rad__side { justify-items: start; text-align: left; }
       }
       #x-hero-count { font-family: var(--x-mono); color: var(--x-orange); font-variant-numeric: tabular-nums; }
+      .x-rad[hidden] { display: none; }
+
+      /* Radar toolbar: filters + copy */
+      .x-bar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; }
+      .x-filter { display: flex; flex-wrap: wrap; gap: 6px; }
+      .x-chipbtn {
+        min-height: 34px; padding: 6px 14px;
+        border-radius: var(--r-pill);
+        background: var(--fill-primary-on); color: var(--text-secondary);
+        border: 1px solid var(--stroke-primary);
+        font: var(--type-tag); cursor: pointer;
+      }
+      .x-chipbtn:hover { box-shadow: inset 0 0 0 100px var(--hover-wash); }
+      .x-chipbtn[aria-pressed="true"] { border-color: var(--x-cyan); color: var(--x-cyan); }
+      .x-copy { color: var(--text-primary); }
+      .x-copy.is-copied { border-color: var(--x-green); color: var(--x-green); }
+      .x-copybox[hidden] { display: none; }
+      .x-copybox { display: grid; gap: 8px; padding: 14px 16px; border-radius: var(--r-m); background: var(--fill-tertiary); border-left: 3px solid var(--x-green); }
+      .x-copybox__status { font: var(--type-tag); color: var(--x-green); }
+      .x-copybox textarea { width: 100%; resize: vertical; padding: 10px 12px; border-radius: var(--r-s); border: 1px solid var(--stroke-primary); background: var(--fill-primary-on); color: var(--text-primary); font: var(--type-caption); font-family: var(--x-mono); }
+      @media (pointer: coarse), (max-width: 599px) { .x-chipbtn { min-height: var(--tap); } }
+
+      /* Prominent apply / open */
+      .x-apply {
+        display: inline-flex; align-items: center; gap: 6px;
+        min-height: 36px; padding: 8px 16px;
+        border-radius: var(--r-pill);
+        background: var(--x-cyan); color: var(--fill-primary-on);
+        font: var(--type-label); text-decoration: none; white-space: nowrap;
+      }
+      .x-apply::after { content: "\2197"; }
+      .x-apply:hover { box-shadow: inset 0 0 0 100px var(--hover-wash-primary-on); }
+      .x-apply:focus-visible, .x-chipbtn:focus-visible, .x-guide summary:focus-visible, .x-play summary:focus-visible { outline: 2px solid var(--x-cyan); outline-offset: 2px; }
+      @media (pointer: coarse), (max-width: 599px) { .x-apply { min-height: var(--tap); } }
+      .x-sublink { font: var(--type-caption); color: var(--text-secondary); }
+
+      /* How-to guide inside each card */
+      .x-guide { grid-column: 1 / -1; border-top: 1px solid var(--stroke-secondary); padding-top: 4px; }
+      .x-guide summary {
+        display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+        min-height: var(--tap); cursor: pointer; list-style: none;
+        font: var(--type-label); color: var(--text-primary);
+      }
+      .x-guide summary::-webkit-details-marker, .x-play summary::-webkit-details-marker { display: none; }
+      .x-guide summary::before, .x-play summary::after {
+        content: "+"; width: 22px; height: 22px; display: grid; place-items: center; flex: none;
+        border-radius: 50%; border: 1px solid var(--stroke-primary); color: var(--x-cyan);
+        font-family: var(--x-mono); transition: transform var(--dur-quick) var(--ease-out);
+      }
+      .x-guide[open] summary::before, .x-play[open] summary::after { transform: rotate(45deg); }
+      .x-time { font: var(--type-caption); color: var(--x-gold); font-family: var(--x-mono); }
+      .x-guide__body { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 20px 28px; padding: 8px 0 6px; }
+      @media (max-width: 760px) { .x-guide__body { grid-template-columns: minmax(0, 1fr); } }
+      .x-label { font: var(--type-caption); color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px; }
+      .x-steps { list-style: none; margin: 0; padding: 0; counter-reset: x-step; display: grid; gap: 10px; }
+      .x-steps > li { counter-increment: x-step; display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 8px; font: var(--type-body); }
+      .x-steps > li::before { content: counter(x-step, decimal-leading-zero); font-family: var(--x-mono); font-size: var(--size-caption); color: var(--x-gold); padding-top: 2px; }
+      .x-steps ul { margin: 6px 0 0; padding-left: 18px; color: var(--text-secondary); }
+      .x-need { list-style: none; margin: 0 0 14px; padding: 0; display: grid; gap: 2px; }
+      .x-need label { display: flex; align-items: center; gap: 10px; min-height: 36px; font: var(--type-label); cursor: pointer; }
+      .x-need input { width: 18px; height: 18px; flex: none; accent-color: var(--x-green); cursor: pointer; }
+      .x-need label:has(input:checked) { color: var(--text-secondary); text-decoration: line-through; text-decoration-color: var(--x-green); }
+      .x-need__count { font-family: var(--x-mono); color: var(--x-green); text-transform: none; letter-spacing: 0; }
+      .x-tip { padding: 12px 14px; border-radius: var(--r-s); background: var(--fill-primary-on); border-left: 3px solid var(--x-gold); font: var(--type-small); }
+      .x-tip b { color: var(--x-gold); font-weight: var(--weight-medium); display: block; margin-bottom: 2px; }
+
+      /* Playbooks accordion */
+      .x-plays { display: grid; gap: 10px; }
+      .x-play { border-radius: var(--r-m); background: var(--fill-tertiary); padding: 0 24px; }
+      .x-play summary { display: flex; align-items: center; gap: 16px; min-height: 72px; padding: 14px 0; cursor: pointer; list-style: none; }
+      .x-play summary::after { margin-left: auto; }
+      .x-play__tag { font-family: var(--x-mono); font-size: var(--size-figure); line-height: 1; color: var(--x-orange); min-width: 1.4ch; }
+      .x-play h3 { font: var(--type-heading); }
+      .x-play summary small { display: block; font: var(--type-small); color: var(--text-secondary); margin-top: 2px; }
+      .x-play__body { padding: 4px 0 24px; border-top: 1px solid var(--stroke-secondary); padding-top: 18px; }
+      .x-play[open] { box-shadow: inset 3px 0 0 var(--x-cyan); }
 
       /* Career ladder */
       .x-ladder { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
@@ -164,120 +240,480 @@
           <div class="head">
             <p class="head__eyebrow">Live deadline radar</p>
             <h2>Everything he is chasing, soonest first, so nothing paid slips past.</h2>
-            <p class="head__sub">Countdowns tick against exact IST times. Ticks stay on this visit only.</p>
+            <p class="head__sub">Countdowns tick against exact IST times. Open any card's guide for the steps. Ticks stay on this visit only.</p>
+          </div>
+          <div class="x-bar">
+            <div class="x-filter" role="group" aria-label="Filter deadlines">
+              <button class="x-chipbtn" type="button" data-filter="all" aria-pressed="true">All</button>
+              <button class="x-chipbtn" type="button" data-filter="paid" aria-pressed="false">Paid</button>
+              <button class="x-chipbtn" type="button" data-filter="courses" aria-pressed="false">Courses</button>
+              <button class="x-chipbtn" type="button" data-filter="exams" aria-pressed="false">Exams</button>
+              <button class="x-chipbtn" type="button" data-filter="hackathons" aria-pressed="false">Hackathons</button>
+            </div>
+            <button class="x-chipbtn x-copy" type="button" id="x-copy">Copy all deadlines</button>
+          </div>
+          <div class="x-copybox" id="x-copy-box" hidden>
+            <p class="x-copybox__status" id="x-copy-status" aria-live="polite"></p>
+            <textarea id="x-copy-text" readonly rows="6" aria-label="All deadlines as plain text"></textarea>
           </div>
           <div class="x-radar-sum">
-            <span id="x-sum"><b>9</b> on the radar</span>
+            <span id="x-sum"><b>10</b> on the radar</span>
             <span class="x-key" style="--x-k: var(--x-orange)">Under 3 days</span>
             <span class="x-key" style="--x-k: var(--x-gold)">Under 14 days</span>
             <span class="x-key" style="--x-k: var(--x-cyan)">Later</span>
             <span class="x-key" style="--x-k: var(--x-green)">Done</span>
           </div>
           <ol class="x-radar" id="x-radar">
-            <li class="x-rad" data-at="2026-10-22T17:29:00+05:30">
+            <li class="x-rad" data-at="2026-10-22T17:29:00+05:30" data-cat="paid">
               <div>
-                <p class="x-rad__when">Closes · Thu 22 Oct 2026, 5:29 PM IST</p>
+                <p class="x-rad__when">Closes · Thu 22 Oct 2026, 5:29 PM IST · 21 Oct 23:59 AoE</p>
                 <h3>DISPATCH Fellowship</h3>
-                <p class="x-rad__meta"><span class="pill">$2,000</span> <span class="chip chip--solid">Submit today</span></p>
-                <p class="x-rad__note">Application pack already drafted.</p>
+                <p class="x-rad__meta"><span class="pill">$2,000</span> <span class="pill">6 weeks remote</span> <span class="pill">~15 h/week</span> <span class="chip chip--solid">Submit today</span></p>
+                <p class="x-rad__note">3–4 short AI-safety videos a week, with mentors including Rob Miles.</p>
               </div>
               <div class="x-rad__side">
                 <div class="x-count" aria-hidden="true"></div>
-                <div class="links"><button class="x-toggle" type="button" aria-pressed="false">Done</button></div>
+                <div class="links"><a class="x-apply" href="https://dispatchfellowship.org/apply" target="_blank" rel="noopener">Apply</a><button class="x-toggle" type="button" aria-pressed="false">Done</button></div>
               </div>
+              <details class="x-guide">
+                <summary>How to do it <span class="x-time">~1 hour, mostly the video</span></summary>
+                <div class="x-guide__body">
+                  <div>
+                    <p class="x-label">Steps</p>
+                    <ol class="x-steps">
+                      <li>Open the form. Budget about an hour in total; most of it goes on the video.</li>
+                      <li>Paste your prepared answers:
+                        <ul>
+                          <li>Affiliation</li>
+                          <li>AI-safety engagement: OpenClaw security audits, cognee hardening, promptfoo red-team fixes, Gray Swan IPI challenge, Control Superintelligence hub</li>
+                          <li>Risks paragraph</li>
+                          <li>The $100B philanthropist answer, in your own numbers</li>
+                          <li>Media experience</li>
+                        </ul>
+                      </li>
+                      <li>Record a vertical video, 30 s to 2 min, on camera:
+                        <ul>
+                          <li>Hook in the first 3 s: “An AI threatened to leak an executive's affair to avoid being shut down.”</li>
+                          <li>Explain Anthropic's Agentic Misalignment study (June 2025): 16 models in simulated corporate scenarios. Claude Opus 4 and Gemini 2.5 Flash chose blackmail in 96% of runs; GPT-4.1 and Grok 3 Beta in 80%.</li>
+                          <li>Caveat: it was simulated, and has not been seen in real deployments.</li>
+                          <li>End on why agent oversight matters.</li>
+                        </ul>
+                      </li>
+                      <li>Upload the file (500 MB max) or paste a YouTube or Drive link.</li>
+                      <li>Add the optional tweet.</li>
+                      <li>Tick consent to share with partner programs.</li>
+                    </ol>
+                  </div>
+                  <div>
+                    <p class="x-label">What you need ready <span class="x-need__count"></span></p>
+                    <ul class="x-need">
+                      <li><label><input type="checkbox" autocomplete="off" /> Phone and good light</label></li>
+                      <li><label><input type="checkbox" autocomplete="off" /> Script</label></li>
+                      <li><label><input type="checkbox" autocomplete="off" /> Best Short link</label></li>
+                      <li><label><input type="checkbox" autocomplete="off" /> Film clip link</label></li>
+                    </ul>
+                    <p class="x-tip"><b>Pro tip</b>Show your face for the hook and the ending. Accuracy is scored.</p>
+                  </div>
+                </div>
+              </details>
             </li>
-            <li class="x-rad" data-at="2026-10-26T18:30:00+05:30">
+            <li class="x-rad" data-at="2026-10-26T18:30:00+05:30" data-cat="hackathons">
               <div>
-                <p class="x-rad__when">Decision expected · Mon 26 Oct 2026, 6:30 PM IST</p>
+                <p class="x-rad__when">Decision by · Mon 26 Oct 2026, 6:30 PM IST</p>
                 <h3>Meta Global AI Developer Hackathon</h3>
-                <p class="x-rad__meta"><span class="pill">Indie track</span> <span class="chip">Pending</span></p>
-                <p class="x-rad__note">Applied with the AgentShield idea.</p>
+                <p class="x-rad__meta"><span class="pill">Indie track</span> <span class="pill">AgentShield</span> <span class="chip">Applied · pending</span></p>
               </div>
               <div class="x-rad__side">
                 <div class="x-count" aria-hidden="true"></div>
-                <div class="links"><button class="x-toggle" type="button" aria-pressed="false">Done</button></div>
+                <div class="links"><a class="x-apply" href="https://cerebralvalley.ai" target="_blank" rel="noopener">Open</a><button class="x-toggle" type="button" aria-pressed="false">Done</button></div>
               </div>
+              <details class="x-guide">
+                <summary>How to do it <span class="x-time">~2 h of prep if accepted</span></summary>
+                <div class="x-guide__body">
+                  <div>
+                    <p class="x-label">Steps</p>
+                    <ol class="x-steps">
+                      <li>Watch your email for the decision.</li>
+                      <li>If accepted: set up the repo and a README skeleton.</li>
+                      <li>Prep a 2-minute demo script.</li>
+                      <li>Plan the build in 3 milestones.</li>
+                      <li>If not accepted: reuse the AgentShield idea for Apart's hackathon.</li>
+                    </ol>
+                  </div>
+                  <div>
+                    <p class="x-label">What you need ready <span class="x-need__count"></span></p>
+                    <ul class="x-need">
+                      <li><label><input type="checkbox" autocomplete="off" /> Repo with README skeleton</label></li>
+                      <li><label><input type="checkbox" autocomplete="off" /> 2-minute demo script</label></li>
+                      <li><label><input type="checkbox" autocomplete="off" /> 3-milestone build plan</label></li>
+                    </ul>
+                    <p class="x-tip"><b>Pro tip</b>Draft the README before the email lands, so day one of the build starts with code.</p>
+                  </div>
+                </div>
+              </details>
             </li>
-            <li class="x-rad" data-at="2026-10-26T23:59:00+05:30">
+            <li class="x-rad" data-at="2026-10-26T23:59:00+05:30" data-cat="exams">
               <div>
-                <p class="x-rad__when">Deadline · Mon 26 Oct 2026, 11:59 PM IST</p>
-                <h3>IISc PhD application</h3>
-                <p class="x-rad__meta"><span class="pill">Optional path</span></p>
+                <p class="x-rad__when">Applications close · Mon 26 Oct 2026, 11:59 PM IST</p>
+                <h3>IISc PhD, January 2027 session</h3>
+                <p class="x-rad__meta"><span class="pill">Interviews 16–19 Nov 2026</span> <span class="pill">Starts 1 Jan 2027</span> <span class="pill">Optional path</span></p>
               </div>
               <div class="x-rad__side">
                 <div class="x-count" aria-hidden="true"></div>
-                <div class="links"><button class="x-toggle" type="button" aria-pressed="false">Done</button></div>
+                <div class="links"><a class="x-apply" href="https://admissions.iisc.ac.in/" target="_blank" rel="noopener">Apply</a><button class="x-toggle" type="button" aria-pressed="false">Done</button></div>
+                <a class="x-sublink link" href="https://iisc.ac.in/admissions/important-dates" target="_blank" rel="noopener">Important dates</a>
               </div>
+              <details class="x-guide">
+                <summary>How to do it <span class="x-time">~1–2 hours</span></summary>
+                <div class="x-guide__body">
+                  <div>
+                    <p class="x-label">Steps</p>
+                    <ol class="x-steps">
+                      <li>Sign up on the portal with name, date of birth, mobile and email.</li>
+                      <li>Choose PhD (regular) and check department eligibility. Most CS/CDS PhD routes want a valid GATE/NET score or equivalent.</li>
+                      <li>Final-year students are eligible if degree requirements finish by 1 Jan 2027 and certificates are furnished by 31 Mar 2027.</li>
+                      <li>Upload academic records and achievements: publications, hackathon wins, open source.</li>
+                      <li>Pay the fee online (net-banking, card or UPI) before the deadline.</li>
+                    </ol>
+                  </div>
+                  <div>
+                    <p class="x-label">What you need ready <span class="x-need__count"></span></p>
+                    <ul class="x-need">
+                      <li><label><input type="checkbox" autocomplete="off" /> Name, DOB, mobile, email</label></li>
+                      <li><label><input type="checkbox" autocomplete="off" /> GATE/NET score or equivalent</label></li>
+                      <li><label><input type="checkbox" autocomplete="off" /> Academic records</label></li>
+                      <li><label><input type="checkbox" autocomplete="off" /> Achievements list</label></li>
+                      <li><label><input type="checkbox" autocomplete="off" /> Net-banking, card or UPI for the fee</label></li>
+                    </ul>
+                    <p class="x-tip"><b>Pro tip</b>An optional path: apply only if research in India appeals.</p>
+                  </div>
+                </div>
+              </details>
             </li>
-            <li class="x-rad" data-at="2026-11-01T23:59:00+05:30">
+            <li class="x-rad" data-at="2026-10-25T23:59:00+05:30" data-cat="courses">
               <div>
-                <p class="x-rad__when">Apply by · Sun 1 Nov 2026, 11:59 PM IST</p>
-                <h3>BlueDot Technical AI Safety course</h3>
-                <p class="x-rad__meta"><span class="pill">Free</span></p>
-                <p class="x-rad__note">The first rung of the AI safety ladder.</p>
+                <p class="x-rad__when">Apply by · Sun 25 Oct 2026, 11:59 PM IST · Intensive round 2–6 Nov</p>
+                <h3>BlueDot AGI Strategy course</h3>
+                <p class="x-rad__meta"><span class="pill">Free</span> <span class="pill">~25 h</span></p>
+                <p class="x-rad__note">Later rounds: Part-time 16 Nov–20 Dec and Intensive 16–20 Nov (apply by 8 Nov); Intensive 7–11 Dec (apply by 29 Nov).</p>
               </div>
               <div class="x-rad__side">
                 <div class="x-count" aria-hidden="true"></div>
-                <div class="links"><a class="btn" href="https://bluedot.org" target="_blank" rel="noopener">BlueDot</a><button class="x-toggle" type="button" aria-pressed="false">Done</button></div>
+                <div class="links"><a class="x-apply" href="https://web.miniextensions.com/9Kuya4AzFGWgayC3gQaX" target="_blank" rel="noopener">Apply</a><button class="x-toggle" type="button" aria-pressed="false">Done</button></div>
               </div>
+              <details class="x-guide">
+                <summary>How to do it <span class="x-time">~45 min</span></summary>
+                <div class="x-guide__body">
+                  <div>
+                    <p class="x-label">Steps</p>
+                    <ol class="x-steps">
+                      <li>Pick a round, and check it doesn't clash with an exam.</li>
+                      <li>Choose “participant”.</li>
+                      <li>Fill the profile: LinkedIn <a class="link" href="https://www.linkedin.com/in/aniruddha-adak" target="_blank" rel="noopener">linkedin.com/in/aniruddha-adak</a>, GitHub, field CS + ML, undergraduate, Kolkata.</li>
+                      <li>Answer in your own words. BlueDot asks for answers without AI assistance; bullets are welcome.
+                        <ul>
+                          <li>What you'll do differently after the course, and why you can't now.</li>
+                          <li>How you've engaged with AI safety.</li>
+                        </ul>
+                      </li>
+                    </ol>
+                  </div>
+                  <div>
+                    <p class="x-label">What you need ready <span class="x-need__count"></span></p>
+                    <ul class="x-need">
+                      <li><label><input type="checkbox" autocomplete="off" /> Exam dates, to pick a round</label></li>
+                      <li><label><input type="checkbox" autocomplete="off" /> LinkedIn and GitHub links</label></li>
+                      <li><label><input type="checkbox" autocomplete="off" /> One concrete post-course action</label></li>
+                      <li><label><input type="checkbox" autocomplete="off" /> Bullets on AI-safety engagement</label></li>
+                    </ul>
+                    <p class="x-tip"><b>Pro tip</b>Name one concrete action, such as agent guardrail tooling in projects you already contribute to.</p>
+                  </div>
+                </div>
+              </details>
             </li>
-            <li class="x-rad" data-at="2026-11-02T17:29:00+05:30">
+            <li class="x-rad" data-at="2026-11-08T23:59:00+05:30" data-cat="courses">
               <div>
-                <p class="x-rad__when">Closes · 23:59 AoE Sun 1 Nov = Mon 2 Nov 2026, 5:29 PM IST</p>
+                <p class="x-rad__when">Apply by · Sun 8 Nov 2026, 11:59 PM IST</p>
+                <h3>BlueDot Technical AI Safety Project Sprint</h3>
+                <p class="x-rad__meta"><span class="pill">Free</span> <span class="pill">30 hours</span> <span class="pill">Mentored by an AI safety expert</span></p>
+              </div>
+              <div class="x-rad__side">
+                <div class="x-count" aria-hidden="true"></div>
+                <div class="links"><a class="x-apply" href="https://bluedot.org/courses/technical-ai-safety-project" target="_blank" rel="noopener">Apply</a><button class="x-toggle" type="button" aria-pressed="false">Done</button></div>
+                <a class="x-sublink link" href="https://bluedot.org/courses/technical-ai-safety" target="_blank" rel="noopener">Course page</a>
+              </div>
+              <details class="x-guide">
+                <summary>How to do it <span class="x-time">~2 hours with the plan</span></summary>
+                <div class="x-guide__body">
+                  <div>
+                    <p class="x-label">Steps</p>
+                    <ol class="x-steps">
+                      <li>Pick a scoped project: agent evals, AI control or red-teaming.</li>
+                      <li>Write a one-page plan.</li>
+                      <li>Apply. Course graduates are prioritised; equivalent knowledge is considered.</li>
+                    </ol>
+                  </div>
+                  <div>
+                    <p class="x-label">What you need ready <span class="x-need__count"></span></p>
+                    <ul class="x-need">
+                      <li><label><input type="checkbox" autocomplete="off" /> Project topic, scoped to 30 hours</label></li>
+                      <li><label><input type="checkbox" autocomplete="off" /> One-page plan</label></li>
+                      <li><label><input type="checkbox" autocomplete="off" /> Links proving equivalent knowledge</label></li>
+                    </ul>
+                    <p class="x-tip"><b>Pro tip</b>Without the course, let shipped safety work make the case: link the audits and merged PRs.</p>
+                  </div>
+                </div>
+              </details>
+            </li>
+            <li class="x-rad" data-at="2026-11-02T17:29:00+05:30" data-cat="paid">
+              <div>
+                <p class="x-rad__when">Closes · Mon 2 Nov 2026, 5:29 PM IST · 23:59 AoE Sun 1 Nov</p>
                 <h3>Pivotal AI Safety Research Fellowship, London</h3>
-                <p class="x-rad__meta"><span class="pill">£15,000–£18,000 stipend + travel</span> <span class="pill">£1,800/month housing</span> <span class="pill">Compute</span></p>
-                <p class="x-rad__note">18 Jan–30 Apr 2027 at LISA.</p>
+                <p class="x-rad__meta"><span class="pill">£15,000–£18,000 stipend</span> <span class="pill">Travel</span> <span class="pill">£1,800/month housing, non-London fellows</span> <span class="pill">Compute</span> <span class="pill">Weekday lunch &amp; dinner</span></p>
+                <p class="x-rad__note">18 Jan–30 Apr 2027 at LISA. Written application first; shortlisted applicants then do a short video interview, a mentor-specific work task and a personal interview.</p>
               </div>
               <div class="x-rad__side">
                 <div class="x-count" aria-hidden="true"></div>
-                <div class="links"><a class="btn" href="https://www.pivotal-research.org/fellowships/ai-safety-fellowship" target="_blank" rel="noopener">Pivotal</a><button class="x-toggle" type="button" aria-pressed="false">Done</button></div>
+                <div class="links"><a class="x-apply" href="https://www.pivotal-research.org/fellowships/ai-safety-fellowship" target="_blank" rel="noopener">Apply</a><button class="x-toggle" type="button" aria-pressed="false">Done</button></div>
               </div>
+              <details class="x-guide">
+                <summary>How to do it <span class="x-time">~1–2 hours, written stage</span></summary>
+                <div class="x-guide__body">
+                  <div>
+                    <p class="x-label">Steps</p>
+                    <ol class="x-steps">
+                      <li>Browse mentors and projects; shortlist 2–3 that match agent security or evals.</li>
+                      <li>Write the why-you and project-fit answers, citing AgentShield, OpenClaw audits and merged PRs (gemini-cli, hermes-agent, cognee).</li>
+                      <li>Check visa and college timing: it is in person, full time, and overlaps your final semester.</li>
+                      <li>Submit before the deadline.</li>
+                    </ol>
+                  </div>
+                  <div>
+                    <p class="x-label">What you need ready <span class="x-need__count"></span></p>
+                    <ul class="x-need">
+                      <li><label><input type="checkbox" autocomplete="off" /> 2–3 shortlisted mentors</label></li>
+                      <li><label><input type="checkbox" autocomplete="off" /> AgentShield link</label></li>
+                      <li><label><input type="checkbox" autocomplete="off" /> OpenClaw audit links</label></li>
+                      <li><label><input type="checkbox" autocomplete="off" /> Merged PR links</label></li>
+                      <li><label><input type="checkbox" autocomplete="off" /> Visa and college timing checked</label></li>
+                    </ul>
+                    <p class="x-tip"><b>Pro tip</b>Pivotal pays $1,000 if someone you refer is accepted.</p>
+                  </div>
+                </div>
+              </details>
             </li>
-            <li class="x-rad" data-at="2026-11-10T23:59:00+05:30">
+            <li class="x-rad" data-at="2026-11-10T23:59:00+05:30" data-cat="">
               <div>
                 <p class="x-rad__when">Shuts down · Tue 10 Nov 2026, 11:59 PM IST</p>
-                <h3>CineV shuts down</h3>
-                <p class="x-rad__note">Export any storyboards and videos before then.</p>
+                <h3>CineV shutdown</h3>
+                <p class="x-rad__note">Export every storyboard and video before then.</p>
               </div>
               <div class="x-rad__side">
                 <div class="x-count" aria-hidden="true"></div>
-                <div class="links"><button class="x-toggle" type="button" aria-pressed="false">Done</button></div>
+                <div class="links"><a class="x-apply" href="https://drive.google.com" target="_blank" rel="noopener">Open Drive</a><button class="x-toggle" type="button" aria-pressed="false">Done</button></div>
               </div>
+              <details class="x-guide">
+                <summary>How to do it <span class="x-time">Depends on library size</span></summary>
+                <div class="x-guide__body">
+                  <div>
+                    <p class="x-label">Steps</p>
+                    <ol class="x-steps">
+                      <li>Log in to CineV.</li>
+                      <li>Export every storyboard and video.</li>
+                      <li>Back everything up to Drive.</li>
+                    </ol>
+                  </div>
+                  <div>
+                    <p class="x-label">What you need ready <span class="x-need__count"></span></p>
+                    <ul class="x-need">
+                      <li><label><input type="checkbox" autocomplete="off" /> CineV login</label></li>
+                      <li><label><input type="checkbox" autocomplete="off" /> Free Drive space</label></li>
+                    </ul>
+                    <p class="x-tip"><b>Pro tip</b>Open a few exported files from Drive before the shutdown, to be sure they play.</p>
+                  </div>
+                </div>
+              </details>
             </li>
-            <li class="x-rad" data-at="2026-11-27T00:00:00+05:30">
+            <li class="x-rad" data-at="2026-11-27T00:00:00+05:30" data-cat="hackathons">
               <div>
-                <p class="x-rad__when">Starts · Fri 27 Nov 2026, 12:00 AM IST</p>
+                <p class="x-rad__when">Starts · Fri 27 Nov 2026, 12:00 AM IST · online 27–29 Nov</p>
                 <h3>Apart Research Agent Attribution Hackathon</h3>
-                <p class="x-rad__meta"><span class="pill">Online 27–29 Nov 2026</span> <span class="pill">$2,000 cash prizes</span></p>
+                <p class="x-rad__meta"><span class="pill">$2,000 prizes</span> <span class="pill">Online</span></p>
               </div>
               <div class="x-rad__side">
                 <div class="x-count" aria-hidden="true"></div>
-                <div class="links"><a class="btn" href="https://apartresearch.com/sprints/agent-attribution-2026" target="_blank" rel="noopener">Apart sprint</a><button class="x-toggle" type="button" aria-pressed="false">Done</button></div>
+                <div class="links"><a class="x-apply" href="https://apartresearch.com/sprints/agent-attribution-2026" target="_blank" rel="noopener">Register</a><button class="x-toggle" type="button" aria-pressed="false">Done</button></div>
               </div>
+              <details class="x-guide">
+                <summary>How to do it <span class="x-time">The weekend, plus an evening of prep</span></summary>
+                <div class="x-guide__body">
+                  <div>
+                    <p class="x-label">Steps</p>
+                    <ol class="x-steps">
+                      <li>Register.</li>
+                      <li>Form or join a team, or go solo.</li>
+                      <li>Read the starter resources.</li>
+                      <li>Prep a repo template and an eval harness beforehand.</li>
+                      <li>Submit a report and code by the end.</li>
+                    </ol>
+                  </div>
+                  <div>
+                    <p class="x-label">What you need ready <span class="x-need__count"></span></p>
+                    <ul class="x-need">
+                      <li><label><input type="checkbox" autocomplete="off" /> Registration done</label></li>
+                      <li><label><input type="checkbox" autocomplete="off" /> Team or solo decided</label></li>
+                      <li><label><input type="checkbox" autocomplete="off" /> Repo template</label></li>
+                      <li><label><input type="checkbox" autocomplete="off" /> Eval harness</label></li>
+                    </ul>
+                    <p class="x-tip"><b>Pro tip</b>If Meta says no, AgentShield is a ready-made starting point here. See the solo playbook below.</p>
+                  </div>
+                </div>
+              </details>
             </li>
-            <li class="x-rad" data-at="2026-11-29T09:00:00+05:30">
+            <li class="x-rad" data-at="2026-11-29T09:00:00+05:30" data-cat="exams">
               <div>
-                <p class="x-rad__when">Exam · Sun 29 Nov 2026, 9:00 AM IST</p>
-                <h3>CAT exam</h3>
-                <p class="x-rad__meta"><span class="pill">Optional</span></p>
+                <p class="x-rad__when">Exam · Sun 29 Nov 2026</p>
+                <h3>CAT 2026</h3>
+                <p class="x-rad__meta"><span class="chip">Only if already registered</span></p>
               </div>
               <div class="x-rad__side">
                 <div class="x-count" aria-hidden="true"></div>
-                <div class="links"><button class="x-toggle" type="button" aria-pressed="false">Done</button></div>
+                <div class="links"><a class="x-apply" href="https://iimcat.ac.in" target="_blank" rel="noopener">Open</a><button class="x-toggle" type="button" aria-pressed="false">Done</button></div>
               </div>
+              <details class="x-guide">
+                <summary>How to do it <span class="x-time">Exam day</span></summary>
+                <div class="x-guide__body">
+                  <div>
+                    <p class="x-label">Steps</p>
+                    <ol class="x-steps">
+                      <li>Log in on the CAT site and confirm your registration.</li>
+                      <li>Download the admit card once it is out.</li>
+                      <li>Check your centre and reporting time.</li>
+                      <li>Take a few full mock tests before the day.</li>
+                    </ol>
+                  </div>
+                  <div>
+                    <p class="x-label">What you need ready <span class="x-need__count"></span></p>
+                    <ul class="x-need">
+                      <li><label><input type="checkbox" autocomplete="off" /> CAT login</label></li>
+                      <li><label><input type="checkbox" autocomplete="off" /> Printed admit card</label></li>
+                      <li><label><input type="checkbox" autocomplete="off" /> Photo ID</label></li>
+                    </ul>
+                    <p class="x-tip"><b>Pro tip</b>It falls on the last day of Apart's hackathon (27–29 Nov). Pick one.</p>
+                  </div>
+                </div>
+              </details>
             </li>
-            <li class="x-rad" data-at="2027-02-06T09:00:00+05:30">
+            <li class="x-rad" data-at="2027-02-06T09:30:00+05:30" data-cat="exams">
               <div>
-                <p class="x-rad__when">Window opens · Sat 6 Feb 2027, 9:00 AM IST</p>
+                <p class="x-rad__when">Exam starts · Sat 6 Feb 2027, 9:30 AM IST</p>
                 <h3>GATE 2027</h3>
-                <p class="x-rad__meta"><span class="pill">Runs 6–21 Feb 2027</span> <span class="pill">Optional</span></p>
+                <p class="x-rad__meta"><span class="pill">6, 7, 13, 14, 20, 21 Feb 2027</span> <span class="pill">Results 19 Mar 2027</span> <span class="chip">Registration closed — only relevant if already registered</span></p>
+                <p class="x-rad__note">Registration closed on 16 Oct 2026.</p>
               </div>
               <div class="x-rad__side">
                 <div class="x-count" aria-hidden="true"></div>
-                <div class="links"><button class="x-toggle" type="button" aria-pressed="false">Done</button></div>
+                <div class="links"><a class="x-apply" href="https://gate2027.iitm.ac.in/" target="_blank" rel="noopener">Open</a><button class="x-toggle" type="button" aria-pressed="false">Done</button></div>
               </div>
+              <details class="x-guide">
+                <summary>How to do it <span class="x-time">Weeks of revision</span></summary>
+                <div class="x-guide__body">
+                  <div>
+                    <p class="x-label">Steps</p>
+                    <ol class="x-steps">
+                      <li>Log in on the GATE 2027 site and confirm you are registered. If not, skip this card.</li>
+                      <li>Note which of the six exam days is yours.</li>
+                      <li>Download the admit card once it is out.</li>
+                      <li>Revise toward 6 Feb with past papers.</li>
+                    </ol>
+                  </div>
+                  <div>
+                    <p class="x-label">What you need ready <span class="x-need__count"></span></p>
+                    <ul class="x-need">
+                      <li><label><input type="checkbox" autocomplete="off" /> GATE login</label></li>
+                      <li><label><input type="checkbox" autocomplete="off" /> Exam day and centre noted</label></li>
+                      <li><label><input type="checkbox" autocomplete="off" /> Admit card and photo ID</label></li>
+                    </ul>
+                    <p class="x-tip"><b>Pro tip</b>A valid GATE score opens most IISc CS/CDS PhD routes later on.</p>
+                  </div>
+                </div>
+              </details>
             </li>
           </ol>
+        </section>
+
+        <section class="section" id="playbooks" data-nav="Playbooks">
+          <div class="head">
+            <p class="head__eyebrow">Playbooks</p>
+            <h2>Deeper guides for the moves that come up again and again.</h2>
+            <p class="head__sub">Open one at a time.</p>
+          </div>
+          <div class="x-plays">
+            <details class="x-play" name="x-plays" open>
+              <summary><span class="x-play__tag">A</span><span><h3>Land a paid YouTube sponsorship</h3><small>Media kit to testimonial, 7 steps</small></span></summary>
+              <div class="x-play__body">
+                <ol class="x-steps">
+                  <li>Build a one-page media kit: channel stats, audience, and past partners (Higgsfield AI). Pull the numbers from <a class="link" href="https://studio.youtube.com" target="_blank" rel="noopener">YouTube Studio</a>.</li>
+                  <li>Set rates per integration and per dedicated video.</li>
+                  <li>List 20 AI-tool brands.</li>
+                  <li>Cold email: short, a link to your best video, a clear offer.</li>
+                  <li>Follow up in 5 days.</li>
+                  <li>Deliver with tracked links.</li>
+                  <li>Ask for a testimonial.</li>
+                </ol>
+              </div>
+            </details>
+            <details class="x-play" name="x-plays">
+              <summary><span class="x-play__tag">B</span><span><h3>Win an AI safety hackathon solo</h3><small>Narrow scope, real numbers, 6 steps</small></span></summary>
+              <div class="x-play__body">
+                <ol class="x-steps">
+                  <li>Scope narrowly.</li>
+                  <li>Ship a working demo with clear eval numbers. <a class="link" href="https://inspect.aisi.org.uk" target="_blank" rel="noopener">Inspect</a> makes a solid harness.</li>
+                  <li>Write the report first, as an outline.</li>
+                  <li>Record a 3-minute video.</li>
+                  <li>Cite prior work.</li>
+                  <li>Open-source it. Next chance: <a class="link" href="https://apartresearch.com/sprints/agent-attribution-2026" target="_blank" rel="noopener">Apart Agent Attribution</a>.</li>
+                </ol>
+              </div>
+            </details>
+            <details class="x-play" name="x-plays">
+              <summary><span class="x-play__tag">C</span><span><h3>Write a fellowship application that gets shortlisted</h3><small>Evidence first, 5 steps</small></span></summary>
+              <div class="x-play__body">
+                <ol class="x-steps">
+                  <li>Lead with shipped evidence, as links.</li>
+                  <li>Show a concrete research question.</li>
+                  <li>Keep every answer specific.</li>
+                  <li>Have a second person read it.</li>
+                  <li>Submit 24 hours early. Live now: <a class="link" href="https://dispatchfellowship.org/apply" target="_blank" rel="noopener">DISPATCH</a> and <a class="link" href="https://www.pivotal-research.org/fellowships/ai-safety-fellowship" target="_blank" rel="noopener">Pivotal</a>.</li>
+                </ol>
+              </div>
+            </details>
+            <details class="x-play" name="x-plays">
+              <summary><span class="x-play__tag">D</span><span><h3>Freelance agent engineering</h3><small>Productised offers, 5 steps</small></span></summary>
+              <div class="x-play__body">
+                <ol class="x-steps">
+                  <li>Productise the offers: RAG chatbot, LangGraph workflow, eval harness.</li>
+                  <li>Price in tiers.</li>
+                  <li>Showcase them on <a class="link" href="https://aniruddha-agency.vercel.app" target="_blank" rel="noopener">aniruddha-agency.vercel.app</a>.</li>
+                  <li>Post case studies on <a class="link" href="https://dev.to/aniruddhaadak" target="_blank" rel="noopener">DEV</a> and <a class="link" href="https://www.linkedin.com/in/aniruddha-adak" target="_blank" rel="noopener">LinkedIn</a>.</li>
+                  <li>Ask every client for a review.</li>
+                </ol>
+              </div>
+            </details>
+            <details class="x-play" name="x-plays">
+              <summary><span class="x-play__tag">E</span><span><h3>Break into AI safety as an engineer</h3><small>Courses to fellowships, 6 steps</small></span></summary>
+              <div class="x-play__body">
+                <ol class="x-steps">
+                  <li>Start with <a class="link" href="https://bluedot.org" target="_blank" rel="noopener">BlueDot</a>.</li>
+                  <li>Then <a class="link" href="https://www.arena.education" target="_blank" rel="noopener">ARENA</a>.</li>
+                  <li>Then SPAR, <a class="link" href="https://www.matsprogram.org" target="_blank" rel="noopener">MATS</a> or LASR.</li>
+                  <li>Then Anthropic Fellows.</li>
+                  <li>Publish along the way on <a class="link" href="https://www.lesswrong.com" target="_blank" rel="noopener">LessWrong</a> or the <a class="link" href="https://www.alignmentforum.org" target="_blank" rel="noopener">Alignment Forum</a>.</li>
+                  <li>Contribute evals to <a class="link" href="https://inspect.aisi.org.uk" target="_blank" rel="noopener">Inspect</a>.</li>
+                </ol>
+              </div>
+            </details>
+          </div>
         </section>
 
         <section class="section" id="plan" data-nav="Plan">
