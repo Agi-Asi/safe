@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Career Compass: Safety, Capabilities, Aerospace &amp; the Value of Education (2026)</title>
+    <meta name="description" content="A fact-checked 2026 career guide for a Kolkata CSE BTech graduate: is AI really writing 90% of code, how many people work in AI safety, is aerospace engineering in India a better bet, does education still matter, and a concrete 12-month path into AI safety." />
+    <meta name="keywords" content="AI safety career India, AI alignment jobs, AI writing code, aerospace engineering India, BTech CSE after graduation, MATS, Anthropic Fellows, BlueDot, GATE 2027, CAT 2026, IISc PhD, Kolkata" />
+    <meta name="author" content="Aniruddha Adak" />
+    <meta name="robots" content="index, follow" />
+    <meta name="geo.region" content="IN-WB" />
+    <meta name="geo.placename" content="Kolkata" />
+    <meta name="geo.position" content="22.5726;88.3639" />
+    <meta name="ICBM" content="22.5726, 88.3639" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="AI Career Compass: Safety, Capabilities, Aerospace &amp; the Value of Education (2026)" />
+    <meta property="og:description" content="Which beliefs about AI, code, safety careers and aerospace are right or wrong, with every number sourced, plus a 12-month path into AI safety from Kolkata." />
+    <meta property="og:image" content="hero_crossroads.jpg" />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="og:site_name" content="AI Career Compass" />
+    <meta property="article:author" content="Aniruddha Adak" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="AI Career Compass (2026)" />
+    <meta name="twitter:description" content="AI safety vs aerospace vs more education: a fact-checked guide and 12-month roadmap for a CSE BTech graduate in India." />
+    <meta name="twitter:image" content="hero_crossroads.jpg" />
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"Article","headline":"AI Career Compass: Safety, Capabilities, Aerospace & the Value of Education (2026)","author":{"@type":"Person","name":"Aniruddha Adak","address":{"@type":"PostalAddress","addressLocality":"Kolkata","addressRegion":"West Bengal","addressCountry":"IN"}},"datePublished":"2026-10-21","inLanguage":"en-IN","keywords":"AI safety career India, AI alignment jobs, AI writing code, aerospace engineering India, BTech CSE after graduation","image":"hero_crossroads.jpg"}
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400&display=swap"
+    />
+    <link rel="stylesheet" href="hark.css" />
+    <link rel="stylesheet" href="hark-charts.css" />
+    <link rel="stylesheet" href="hark-hero.css" />
+    <style>
+      [hidden] { display: none !important; }
+      /* Sources list at the end of each section */
+      .x-sources { font: var(--type-caption); color: var(--text-secondary); border-top: 1px solid var(--stroke-secondary); padding-top: 4px; }
+      .x-sources summary { display: flex; align-items: center; min-height: var(--tap); width: fit-content; cursor: pointer; font: var(--type-tag); color: var(--text-secondary); }
+      .x-sources ol { margin: 4px 0 8px; padding-left: 18px; columns: 2 340px; column-gap: 32px; }
+      .x-sources li { margin-bottom: 6px; break-inside: avoid; overflow-wrap: anywhere; }
+      .x-sources a { color: var(--text-secondary); text-decoration: underline; text-decoration-color: var(--stroke-primary); text-underline-offset: 3px; }
+      .x-sources a:hover { color: var(--text-primary); }
+      @media (pointer: coarse), (max-width: 599px) {
+        .x-sources li { margin-bottom: 0; }
+        .x-sources a, .x-video__meta a { display: inline-flex; align-items: center; min-height: var(--tap); min-width: var(--tap); }
+      }
+
+      /* Segmented toggles: chart scale, paradigm tabs */
+      .x-seg { display: inline-flex; flex-wrap: wrap; gap: 4px; padding: 4px; border-radius: var(--r-pill); background: var(--fill-tertiary); }
+      .chart .x-seg { background: var(--fill-primary-on); }
+      .x-seg button { font: var(--type-tag); min-height: 36px; padding: 6px 14px; border: 0; border-radius: var(--r-pill); background: transparent; color: var(--text-secondary); cursor: pointer; }
+      .x-seg button[aria-pressed="true"], .x-seg button[aria-selected="true"] { background: var(--fill-primary); color: var(--text-primary-on); }
+      @media (pointer: coarse), (max-width: 599px) { .x-seg button { min-height: var(--tap); } }
+      .x-tools { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+      .x-tools .chart__cap { margin-bottom: 0; }
+
+      /* Belief score meter */
+      .x-meter { display: grid; gap: 10px; padding: 18px 20px; border-radius: var(--r-m); border: 1px solid var(--stroke-primary); }
+      .x-meter__top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; font: var(--type-label); }
+      .x-meter__fig { font: var(--type-figure); font-variant-numeric: tabular-nums; }
+      .x-meter__track { height: 10px; border-radius: var(--r-pill); background: var(--fill-tertiary); overflow: hidden; }
+      .x-meter__fill { height: 100%; width: 0; border-radius: var(--r-pill); background: var(--fill-primary); transition: width var(--dur-draw) var(--ease-out); }
+
+      /* Myth flip cards */
+      .x-myths { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 16px; }
+      .x-myth { perspective: 1600px; }
+      .x-myth__inner { display: grid; height: 100%; transform-style: preserve-3d; transition: transform 700ms var(--ease-out); }
+      .x-myth.is-flipped .x-myth__inner { transform: rotateY(180deg); }
+      .x-myth__face { grid-area: 1 / 1; display: flex; flex-direction: column; gap: 12px; padding: 22px 24px; border-radius: var(--r-m); -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+      .x-myth__front { background: var(--fill-tertiary); }
+      .x-myth__back { background: var(--fill-primary-on); border: 1px solid var(--stroke-primary); transform: rotateY(180deg); font-size: var(--size-small); }
+      .x-myth.is-flipped .x-myth__front, .x-myth:not(.is-flipped) .x-myth__back { visibility: hidden; transition: visibility 0s 350ms; }
+      .x-myth__num { font: var(--type-tag); color: var(--text-secondary); }
+      .x-myth__quote { font: var(--type-heading); text-wrap: balance; }
+      .x-myth__face .btn { margin-top: auto; align-self: flex-start; cursor: pointer; }
+      .x-myth__back p b { font-weight: var(--weight-bold); }
+      @media (prefers-reduced-motion: reduce) { .x-myth__inner { transition: none; } .x-myth.is-flipped .x-myth__inner { transform: none; } .x-myth__back { transform: none; } }
+      .x-verdict { display: inline-flex; align-items: center; gap: 6px; width: fit-content; padding: 4px 10px 4px 8px; border-radius: var(--r-pill); background: var(--fill-tertiary); font: var(--type-tag); color: var(--text-primary); }
+      .x-verdict::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--fill-system-orange); }
+      .x-verdict--true::before { background: var(--fill-system-green); }
+      .x-verdict--false::before { background: var(--fill-system-red); }
+
+      /* Odds figure inside cards */
+      .x-odds { font: var(--type-figure); font-variant-numeric: tabular-nums; margin-bottom: 6px; }
+      .x-rate { height: 6px; margin: 8px 0 12px; border-radius: var(--r-pill); background: var(--fill-primary-on); overflow: hidden; }
+      .x-rate span { display: block; height: 100%; min-width: 3px; border-radius: var(--r-pill); background: var(--fill-primary); }
+
+      /* Path Finder quiz */
+      .x-quiz { display: grid; gap: 22px; padding: 22px 24px; border-radius: var(--r-m); background: var(--fill-tertiary); }
+      .x-quiz fieldset { margin: 0; padding: 0; border: 0; min-width: 0; }
+      .x-quiz legend { padding: 0; margin-bottom: 10px; font: var(--type-label); }
+      .x-opts { display: flex; flex-wrap: wrap; gap: 8px; }
+      .x-opts label { position: relative; display: inline-flex; align-items: center; min-height: var(--tap); padding: 8px 14px; border-radius: var(--r-s); border: 1px solid var(--stroke-primary); background: var(--fill-primary-on); font: var(--type-small); cursor: pointer; transition: box-shadow var(--dur-quick) ease; }
+      .x-opts label:hover { box-shadow: inset 0 0 0 100px var(--hover-wash); }
+      .x-opts input { position: absolute; inset: 0; margin: 0; opacity: 0; cursor: pointer; }
+      .x-opts label:has(input:checked) { background: var(--fill-primary); color: var(--text-primary-on); border-color: transparent; }
+      .x-opts label:has(input:focus-visible) { outline: 2px solid var(--fill-primary); outline-offset: 3px; }
+      .x-result { display: grid; gap: 8px; padding: 18px 20px; border-radius: var(--r-m); background: var(--fill-primary-on); border: 1px solid var(--stroke-primary); }
+      .x-result h3 { font: var(--type-heading); }
+      .x-result .btn { justify-self: start; }
+      .x-picked { box-shadow: inset 0 0 0 2px var(--fill-primary); }
+
+      /* Video library */
+      .x-vgroups { display: grid; gap: 32px; }
+      .x-vgroup h3 { font: var(--type-heading); margin-bottom: 14px; }
+      .x-vgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); gap: 20px 16px; }
+      .x-video { display: grid; gap: 8px; align-content: start; scroll-margin-top: 90px; }
+      .x-video__frame { position: relative; aspect-ratio: 16 / 9; border-radius: var(--r-s); overflow: hidden; background: var(--hero-surface); }
+      .x-video__frame img { width: 100%; height: 100%; object-fit: cover; }
+      .x-video__frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+      .x-video__play { position: absolute; inset: 0; display: grid; place-items: center; text-decoration: none; color: var(--hero-text); }
+      .x-video__play span { display: inline-flex; align-items: center; gap: 6px; min-height: var(--tap); padding: 8px 16px; border-radius: var(--r-pill); background: var(--hero-glass); -webkit-backdrop-filter: var(--hark-blur); backdrop-filter: var(--hark-blur); border: 1px solid var(--hero-glass-stroke); font: var(--type-tag); transition: transform var(--dur-quick) var(--ease-out); }
+      .x-video__play:hover span { transform: scale(1.05); }
+      .x-video__title { font: var(--type-label); }
+      .x-video__meta { font: var(--type-caption); color: var(--text-secondary); display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: center; }
+      .x-video__meta a { color: var(--text-secondary); }
+    </style>
+  </head>
+  <body>
+    <div class="page" id="top">
+      <header class="nav glass" data-auto></header>
+      <main class="main">
+        <section class="hero">
+          <img class="hero__img" src="hero_crossroads.jpg" alt="A young graduate on a Kolkata rooftop at dusk, a glowing neural network on one side and a rocket contrail on the other" />
+          <div class="hero__copy">
+            <p class="hero__eyebrow">AI Career Compass · Kolkata · Oct 2026</p>
+            <h1>Safety, capabilities, aerospace and the value of education</h1>
+            <p class="hero__sub">Yes, align with AI safety, but as an engineer who ships evidence, not as a believer in low competition. Don't switch to aerospace.</p>
+            <p class="hero__meta">For a CSE BTech graduate, class of 2026, who builds AI agents · By Aniruddha Adak</p>
+          </div>
+          <aside class="callout" aria-label="Next step">
+            <p class="callout__head">Next step</p>
+            <p class="callout__lead"><strong>Start BlueDot's AI Safety Fundamentals</strong> and ship one public agent-safety eval project before the next MATS / Anthropic Fellows round.</p>
+            <p class="fineprint">Also on the calendar: IISc January-intake PhD deadline <b>26 Oct 2026</b> · CAT 2026 on <b>29 Nov 2026</b> · GATE 2027 on <b>6–21 Feb 2027</b>.</p>
+            <a class="btn" href="#roadmap">See the 12-month plan</a>
+          </aside>
+          <p class="hero__credit">Two futures from one Kolkata rooftop</p>
+        </section>
+
+        <section class="section" id="myths" data-nav="Myths">
+          <div class="head">
+            <p class="head__eyebrow">The myth-buster</p>
+            <h2>Six beliefs, checked against the evidence. Flip each card.</h2>
+            <p class="head__sub">Your Belief Score updates as you go: true counts 1, partly true ½, mostly false 0.</p>
+          </div>
+          <div class="x-meter" aria-live="polite">
+            <div class="x-meter__top">
+              <span>Belief Score <span class="sub" id="meter-count">· 0 of 6 revealed</span></span>
+              <span class="x-meter__fig" id="meter-fig">–</span>
+            </div>
+            <div class="x-meter__track"><div class="x-meter__fill" id="meter-fill"></div></div>
+            <div class="links"><button class="btn" type="button" id="reveal-all">Reveal all</button><button class="btn" type="button" id="reset-all">Reset</button></div>
+          </div>
+          <div class="x-myths">
+            <article class="x-myth" data-score="0.5">
+              <div class="x-myth__inner">
+                <div class="x-myth__face x-myth__front">
+                  <p class="x-myth__num">Belief 1</p>
+                  <p class="x-myth__quote">"90% of Anthropic's code is written by AI."</p>
+                  <button class="btn" type="button" data-flip>Reveal verdict</button>
+                </div>
+                <div class="x-myth__face x-myth__back">
+                  <span class="x-verdict">Partly true</span>
+                  <p><b>Right:</b> Anthropic's own conservative figure is <b>more than 80%</b> of merged lines as of May 2026; leadership's 90%+ only counts when scripts and experimental code are included.</p>
+                  <p><b>Wrong:</b> in Oct 2025 Redwood Research estimated about <b>50%</b> of merged lines, and Dario Amodei said "not uniformly". Every line is reviewed by engineers, and Anthropic's engineering headcount <b>doubled</b> in 2025.</p>
+                  <button class="btn" type="button" data-flip>Flip back</button>
+                </div>
+              </div>
+            </article>
+            <article class="x-myth" data-score="1">
+              <div class="x-myth__inner">
+                <div class="x-myth__face x-myth__front">
+                  <p class="x-myth__num">Belief 2</p>
+                  <p class="x-myth__quote">"75% of Google's code is AI."</p>
+                  <button class="btn" type="button" data-flip>Reveal verdict</button>
+                </div>
+                <div class="x-myth__face x-myth__back">
+                  <span class="x-verdict x-verdict--true">True, for new code</span>
+                  <p><b>Right:</b> Sundar Pichai, 22 Apr 2026: 75% of all <i>new</i> code at Google is "AI-generated and approved by engineers", up from 25% (Oct 2024), 30% (Apr 2025) and about 50% (fall 2025).</p>
+                  <p><b>Caveat:</b> it is new code, not the whole codebase, it includes autocomplete-style acceptances, and Google has never published how it measures it.</p>
+                  <button class="btn" type="button" data-flip>Flip back</button>
+                </div>
+              </div>
+            </article>
+            <article class="x-myth" data-score="0.5">
+              <div class="x-myth__inner">
+                <div class="x-myth__face x-myth__front">
+                  <p class="x-myth__num">Belief 3</p>
+                  <p class="x-myth__quote">"Within months it'll be 100% AI-written, so programmers are done."</p>
+                  <button class="btn" type="button" data-flip>Reveal verdict</button>
+                </div>
+                <div class="x-myth__face x-myth__back">
+                  <span class="x-verdict">Partly true, misleading</span>
+                  <p><b>Right:</b> writing code is near-automated at frontier labs. The damage is real and lands on <b>entry-level</b> jobs: Stanford's "Canaries" paper finds −13% to −20% employment for ages 22–25 in exposed work; Indeed software postings are 27.5% below Feb 2020, with 71% of the rebound in senior roles; TCS guides to about 25,000 freshers against its usual 40,000.</p>
+                  <p><b>Wrong:</b> review, judgment and research taste are now the bottleneck. In METR's 2025 trial, experienced developers were <b>19% slower</b> with AI while believing they were 20% faster.</p>
+                  <button class="btn" type="button" data-flip>Flip back</button>
+                </div>
+              </div>
+            </article>
+            <article class="x-myth" data-score="0.5">
+              <div class="x-myth__inner">
+                <div class="x-myth__face x-myth__front">
+                  <p class="x-myth__num">Belief 4</p>
+                  <p class="x-myth__quote">"There's not much competition in AI safety."</p>
+                  <button class="btn" type="button" data-flip>Reveal verdict</button>
+                </div>
+                <div class="x-myth__face x-myth__back">
+                  <span class="x-verdict">Partly true</span>
+                  <p><b>Right:</b> only about <b>1,100</b> FTE (≈600 technical) worked on it worldwide in 2025 (McAleese); under 10,000 in total (80,000 Hours); roughly 1 technical safety person per 2,000–5,000 AI workers. Funding is rising fast: Coefficient Giving $168M (2024) → $351M (2025) → over $1B (2026).</p>
+                  <p><b>Wrong:</b> entry slots are very selective. ARENA picks ~30 of ~700 applicants; Anthropic Fellows accepts ~1.6%. Low headcount means the field is short of people who can <i>show work</i>, not that entry is easy.</p>
+                  <button class="btn" type="button" data-flip>Flip back</button>
+                </div>
+              </div>
+            </article>
+            <article class="x-myth" data-score="0">
+              <div class="x-myth__inner">
+                <div class="x-myth__face x-myth__front">
+                  <p class="x-myth__num">Belief 5</p>
+                  <p class="x-myth__quote">"My aerospace friend was right."</p>
+                  <button class="btn" type="button" data-flip>Reveal verdict</button>
+                </div>
+                <div class="x-myth__face x-myth__back">
+                  <span class="x-verdict x-verdict--false">Mostly false, in India</span>
+                  <p><b>Right:</b> AI exposure is lower than in software, and the space economy is growing: $8.4B toward a $44B target by 2033, ~440 space startups, Skyroot valued at $1.1B.</p>
+                  <p><b>Wrong:</b> jobs are scarce. ISRO gets ~1.5 lakh applications per 100 vacancies and advertised 175–176 engineer posts in 2026; GATE Aerospace had 8,444 registrations against 2,59,922 for CS; IIST cut BTech aerospace seats from 75 to 63; starting pay is lower. The best-placed engineers combine AI and aerospace.</p>
+                  <button class="btn" type="button" data-flip>Flip back</button>
+                </div>
+              </div>
+            </article>
+            <article class="x-myth" data-score="0.5">
+              <div class="x-myth__inner">
+                <div class="x-myth__face x-myth__front">
+                  <p class="x-myth__num">Belief 6</p>
+                  <p class="x-myth__quote">"Education isn't worth it: AI is smarter than teachers and information is free."</p>
+                  <button class="btn" type="button" data-flip>Reveal verdict</button>
+                </div>
+                <div class="x-myth__face x-myth__back">
+                  <span class="x-verdict">Partly true</span>
+                  <p><b>Right:</b> an AI tutor designed to make students think <b>more than doubled</b> learning gains (Harvard physics RCT, <i>Sci Rep</i> 2025).</p>
+                  <p><b>Wrong:</b> careless use hurts: students scored 17% worse once ChatGPT was removed (Bastani, <i>PNAS</i> 2025); MIT's "cognitive debt" preprint and the OECD's "metacognitive laziness" warning agree. o3 hallucinated 33% and o4-mini 48% on PersonQA. Degrees still gate visas (H-1B, German Blue Card), and skills-based hiring changed under 1 in 700 hires. Information is free; structure, feedback, credentials and people are not.</p>
+                  <button class="btn" type="button" data-flip>Flip back</button>
+                </div>
+              </div>
+            </article>
+          </div>
+          <details class="x-sources">
+            <summary>Sources (10)</summary>
+            <ol>
+              <li><a href="https://www.anthropic.com/institute/recursive-self-improvement" target="_blank" rel="noopener">Anthropic Institute, "When AI builds itself"</a></li>
+              <li><a href="https://www.redwoodresearch.org/blog/is-90-of-code-at-anthropic-being" target="_blank" rel="noopener">Redwood Research: is 90% of code at Anthropic AI-written?</a></li>
+              <li><a href="https://www.livemint.com/technology/tech-news/90-of-code-at-anthropic-now-written-by-ai-ceo-dario-amodei-says-humans-still-essential-11760608331609.html" target="_blank" rel="noopener">Mint: Amodei at Dreamforce, "not uniformly"</a></li>
+              <li><a href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/cloud-next-2026-sundar-pichai/" target="_blank" rel="noopener">Google: Cloud Next 2026, Sundar Pichai</a></li>
+              <li><a href="https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/" target="_blank" rel="noopener">METR: early-2025 developer RCT</a></li>
+              <li><a href="https://digitaleconomy.stanford.edu/wp-content/uploads/2025/08/Canaries_BrynjolfssonChandarChen.pdf" target="_blank" rel="noopener">Stanford: Canaries in the Coal Mine</a></li>
+              <li><a href="https://www.lesswrong.com/posts/8QjAnWyuE9fktPRgS/ai-safety-field-growth-analysis-2025" target="_blank" rel="noopener">McAleese: AI safety field growth 2025</a></li>
+              <li><a href="https://news.careers360.com/isro-chairman-s-somanath-recruitment-career-internship-research-engineering-industry-connect-interview" target="_blank" rel="noopener">Careers360: S. Somanath on ISRO recruitment</a></li>
+              <li><a href="https://www.nature.com/articles/s41598-025-97652-6" target="_blank" rel="noopener">Kestin et al., Scientific Reports 2025</a></li>
+              <li><a href="https://www.pnas.org/doi/10.1073/pnas.2422633122" target="_blank" rel="noopener">Bastani et al., PNAS 2025</a></li>
+            </ol>
+          </details>
+        </section>
+
+        <section class="section" id="code" data-nav="Code">
+          <div class="head">
+            <p class="head__eyebrow">Hype vs reality: AI writing code</p>
+            <h2>Writing code is being automated. Deciding what to build, verifying it and keeping AI safe is where humans move.</h2>
+            <p class="head__sub">The headline percentages are real but count AI-drafted, human-reviewed lines. Companies won't say how they measure them.</p>
+          </div>
+          <ol class="timeline">
+            <li>
+              <p class="timeline__when">Mar 2025</p>
+              <div class="timeline__what"><b>Anthropic:</b> Amodei predicts AI will write 90% of code "in three to six months", and "essentially all" in twelve. A forecast, not a measurement.</div>
+            </li>
+            <li>
+              <p class="timeline__when">Apr 2025</p>
+              <div class="timeline__what">
+                <ul>
+                  <li><b>Microsoft:</b> Nadella says "maybe 20%, 30%" of code in its repos is written by software. No newer official figure through Oct 2026.</li>
+                  <li><b>Meta:</b> Zuckerberg forecasts "maybe half" of development by AI within a year.</li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <p class="timeline__when">Oct 2025</p>
+              <div class="timeline__what"><b>Anthropic:</b> at Dreamforce Amodei says 90% holds "on many teams… not uniformly". Redwood Research estimates ~50% of merged lines company-wide.</div>
+            </li>
+            <li>
+              <p class="timeline__when">Mar 2026</p>
+              <div class="timeline__what"><b>Meta:</b> internal targets: 65% of engineers in one org writing over 75% of committed code with AI in H1 2026. Targets, not results.</div>
+            </li>
+            <li>
+              <p class="timeline__when">Apr 2026</p>
+              <div class="timeline__what"><b>Google:</b> 75% of all new code is AI-generated and approved by engineers.</div>
+            </li>
+            <li>
+              <p class="timeline__when">May 2026</p>
+              <div class="timeline__what">
+                <ul>
+                  <li><b>Anthropic:</b> more than 80% of merged code authored by Claude, up from low single digits before Claude Code (Feb 2025).</li>
+                  <li><b>Salesforce:</b> no net new engineers in FY26, ~20% more salespeople, about $300M on Anthropic tokens in 2026.</li>
+                </ul>
+              </div>
+            </li>
+          </ol>
+          <figure class="chart">
+            <figcaption class="chart__cap">Google's AI share of new code tripled in 18 months<small>Share of new code that is AI-generated, % · Google per Pichai; Anthropic merged lines per Redwood (Oct 2025) and Anthropic (May 2026)</small></figcaption>
+            <div class="chart__canvas"><canvas id="share-chart" role="img" aria-label="Google's AI share of new code went from 25% in October 2024 to 75% in April 2026; Anthropic's merged-code share went from about 50% to over 80%"></canvas></div>
+          </figure>
+          <div class="head">
+            <h2>The evidence underneath the headlines</h2>
+          </div>
+          <section class="stats" aria-label="Evidence">
+            <div class="stat"><span class="stat__fig">−19%</span><span class="stat__label">Speed of experienced devs using AI (METR RCT, 2025); they believed +20%</span></div>
+            <div class="stat"><span class="stat__fig">29%</span><span class="stat__label">Developers who trust AI accuracy, down from 40% (Stack Overflow 2025)</span></div>
+            <div class="stat"><span class="stat__fig">7.0%</span><span class="stat__label">US CS grad unemployment; computer engineering 7.8% (NY Fed, Feb 2026)</span></div>
+            <div class="stat"><span class="stat__fig">45.2%</span><span class="stat__label">India's Claude use going to software tasks, world's highest (Anthropic)</span></div>
+          </section>
+          <div class="cards">
+            <div>
+              <h3>Productivity is unclear</h3>
+              <ul>
+                <li>METR's Feb 2026 follow-up estimates an 18% speedup, which METR calls "very weak evidence".</li>
+                <li>Anthropic: engineers merged 8x more code per day in Q2 2026 than in 2024, "almost certainly an overstatement" of real gains.</li>
+                <li>Human code review is now the bottleneck at Anthropic.</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Developers verify, not trust</h3>
+              <ul>
+                <li>66% spend more time fixing "almost right" AI code (SO 2025).</li>
+                <li>Only 6.6% trust AI for important decisions (SO 2026, 30,903 respondents).</li>
+                <li>Indian developers trust AI most: 56% highly or somewhat.</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Entry-level jobs take the hit</h3>
+              <ul>
+                <li>US developers aged 22–25: down nearly 20% from the late-2022 peak; the exposed-job gap reached 19% by Jun 2026 (Stanford).</li>
+                <li>Indeed software index 74.4 (Feb 2020 = 100); 71% of the rebound is senior roles.</li>
+                <li>CS grad underemployment is low (19.1%): those hired mostly land degree-level jobs.</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Indian IT is shrinking at the bottom</h3>
+              <ul>
+                <li>TCS headcount fell by 23,460 in FY26 to 5,84,519.</li>
+                <li>Top-5 IT firms: net −6,981 in FY26, against +12,718 in FY25.</li>
+                <li>TCS guides 25,000 freshers for FY27, down from the usual 40,000–42,000; Infosys about 20,000.</li>
+              </ul>
+            </div>
+          </div>
+          <aside class="callout" aria-label="Key insight">
+            <p class="callout__head">Key insight</p>
+            <p class="callout__lead"><strong>Coding is becoming a cheap commodity.</strong> Open models like DeepSeek V4 Pro reach 96.4% on SWE-bench Verified at about $0.10 a task. The scarce human value is judgment, review, system design, domain knowledge and owning outcomes.</p>
+          </aside>
+          <details class="x-sources">
+            <summary>Sources (17)</summary>
+            <ol>
+              <li><a href="https://www.cfr.org/event/ceo-speaker-series-dario-amodei-anthropic" target="_blank" rel="noopener">CFR: Dario Amodei, Mar 2025</a></li>
+              <li><a href="https://www.cnbc.com/2025/04/29/satya-nadella-says-as-much-as-30percent-of-microsoft-code-is-written-by-ai.html" target="_blank" rel="noopener">CNBC: Nadella on 20–30%</a></li>
+              <li><a href="https://finance.yahoo.com/video/zuckerberg-nadella-discuss-ais-increasing-050831524.html" target="_blank" rel="noopener">Yahoo Finance: Zuckerberg forecast</a></li>
+              <li><a href="https://www.businessinsider.com/meta-ai-push-employee-goals-tool-adoption-2-026-3" target="_blank" rel="noopener">Business Insider: Meta AI-coding targets</a></li>
+              <li><a href="https://www.theverge.com/tech/917163/google-says-75-percent-of-all-its-new-code-is-ai-generated" target="_blank" rel="noopener">The Verge: Google 75%</a></li>
+              <li><a href="https://www.theverge.com/2024/10/29/24282757/google-new-code-generated-ai-q3-2024" target="_blank" rel="noopener">The Verge: Google 25% (Oct 2024)</a></li>
+              <li><a href="https://www.livemint.com/companies/news/ai-not-engineers-for-coding-salesforce-to-spend-300-million-on-anthropic-tokens-ceo-marc-benioff-says-11779085374756.html" target="_blank" rel="noopener">Mint: Salesforce $300M on tokens</a></li>
+              <li><a href="https://metr.org/blog/2026-02-24-uplift-update/" target="_blank" rel="noopener">METR: uplift update, Feb 2026</a></li>
+              <li><a href="https://survey.stackoverflow.co/2025/ai" target="_blank" rel="noopener">Stack Overflow 2025 survey: AI</a></li>
+              <li><a href="https://survey.stackoverflow.co/2026" target="_blank" rel="noopener">Stack Overflow 2026 survey</a></li>
+              <li><a href="https://www.newyorkfed.org/medialibrary/Research/Interactives/Data/college-labor-market/College-labor-data" target="_blank" rel="noopener">NY Fed: college labor market data</a></li>
+              <li><a href="https://hiringlab.indeed.com/2026/07/08/ai-and-job-postings-from-destruction-to-creation/" target="_blank" rel="noopener">Indeed Hiring Lab, Jul 2026</a></li>
+              <li><a href="https://www.business-standard.com/companies/news/top-5-it-cos-net-hiring-down-for-fy26-uncertainties-to-continue-126042301290_1.html" target="_blank" rel="noopener">Business Standard: top-5 IT hiring FY26</a></li>
+              <li><a href="https://www.anthropic.com/research/india-brief-economic-index" target="_blank" rel="noopener">Anthropic Economic Index: India brief</a></li>
+              <li><a href="https://digitaleconomy.stanford.edu/news/canariesaug26" target="_blank" rel="noopener">Stanford Canaries, Aug 2026 update</a></li>
+              <li><a href="https://m.economictimes.com/tech/information-tech/tcs-headcount-fell-by-23460-in-fy26-but-no-more-layoffs-for-now-sudeep-kunnummal-chro/articleshow/130286784.cms" target="_blank" rel="noopener">ET: TCS headcount FY26</a></li>
+              <li><a href="https://vals.ai/benchmarks/swebench" target="_blank" rel="noopener">Vals AI: SWE-bench leaderboard</a></li>
+            </ol>
+          </details>
+        </section>
+
+        <script src="p1.js"></script><script src="p2.js"></script><script type="application/json" id="share-data">
+      {"google":[{"x":0,"y":25,"when":"Oct 2024"},{"x":6,"y":30,"when":"Apr 2025"},{"x":12,"y":50,"when":"Fall 2025"},{"x":18,"y":75,"when":"Apr 2026"}],
+       "anthropic":[{"x":12,"y":50,"when":"Oct 2025 (Redwood estimate)"},{"x":19,"y":80,"when":"May 2026 (Anthropic, >80%)"}]}
+    </script>
+    <script type="application/json" id="metr-data">
+      [{"label":"GPT-4","when":"Mar 2023","x":0,"min":4},
+       {"label":"Claude 3.5 Sonnet","when":"Jun 2024","x":15,"min":11},
+       {"label":"o1","when":"Dec 2024","x":21,"min":39},
+       {"label":"Claude 3.7 Sonnet","when":"Feb 2025","x":23,"min":60},
+       {"label":"o3","when":"Apr 2025","x":25,"min":120},
+       {"label":"GPT-5","when":"Aug 2025","x":29,"min":204},
+       {"label":"Claude Opus 4.5","when":"Nov 2025","x":32,"min":294},
+       {"label":"GPT-5.2","when":"Dec 2025","x":33,"min":354},
+       {"label":"Claude Opus 4.6","when":"Feb 2026","x":35,"min":720},
+       {"label":"Gemini 3.1 Pro","when":"Feb 2026","x":35,"min":384},
+       {"label":"GPT-5.4","when":"Mar 2026","x":36,"min":342},
+       {"label":"Mythos Preview","when":"Apr 2026","x":37,"min":1044}]
+    </script>
+    <script type="application/json" id="swe-data">
+      [{"model":"Claude 3 Opus","when":"Mar 2024","score":33.4},
+       {"model":"Claude 3.5 Sonnet","when":"2024","score":49},
+       {"model":"Claude 3.7 Sonnet","when":"Feb 2025","score":62.3},
+       {"model":"GPT-5","when":"Aug 2025","score":74.9},
+       {"model":"Opus 4.5","when":"Nov 2025","score":80.9},
+       {"model":"Mythos Preview","when":"Apr 2026","score":93.9},
+       {"model":"Opus 4.8","when":"May 2026","score":88.6},
+       {"model":"Opus 5 (Vals)","when":"Sep 2026","score":97.0}]
+    </script>
+    <script type="application/json" id="heads-data">
+      [{"name":"AI safety, technical FTE","value":600,"display":"~600","safety":true},
+       {"name":"AI safety, all FTE","value":1100,"display":"~1,100","safety":true},
+       {"name":"NeurIPS 2025 submissions","value":21575,"display":"21,575"},
+       {"name":"India AI talent (Nasscom-Deloitte)","value":600000,"display":"600–650k"},
+       {"name":"India AI professionals (Nasscom, newer)","value":920000,"display":"920k"},
+       {"name":"India engineering grads / year","value":1500000,"display":"~15 lakh"},
+       {"name":"JEE Main 2026 appeared","value":1538468,"display":"15.38 lakh"},
+       {"name":"AI practitioners worldwide","value":3000000,"display":"~3M"}]
+    </script>
+    <script type="application/json" id="money-data">
+      [{"name":"AI safety philanthropy 2025 (Coefficient Giving)","value":0.351,"display":"$351M","safety":true},
+       {"name":"AI safety philanthropy 2026 (Coefficient Giving)","value":1,"display":">$1B","safety":true},
+       {"name":"Big Tech AI capex 2025","value":410,"display":"~$410B"},
+       {"name":"Global corporate AI investment 2025","value":581.7,"display":"$581.7B"},
+       {"name":"Big Tech AI capex 2026 (guidance)","value":725,"display":"~$700–725B"}]
+    </script>
+    <script type="application/json" id="branch-data">
+      [{"branch":"CSE","lakh":3.90},{"branch":"Mechanical","lakh":2.37},{"branch":"Civil","lakh":1.73},{"branch":"ECE","lakh":1.60},{"branch":"Electrical","lakh":1.26}]
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
+    <script src="datalabels.js"></script>
+    <script src="hark-charts.js"></script>
+    <script src="s1.js"></script>
+  </body>
+</html>
