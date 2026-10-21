@@ -9,6 +9,7 @@
 - [AI Safety Cinema](https://agi-asi.github.io/safe/ai-safety-cinema/): The most important conversation of our century, as a cinema. Watch, understand, decide: curated documentaries, debates and talks on AI risk.
 - [AI Safety Video Library](https://agi-asi.github.io/safe/ai-safety-library/): A watch-and-learn hub: 21 topics and 175 hand-picked explainers, from harms today to agents gone rogue, scored from full-transcript reviews.
 - [SIGNAL](https://agi-asi.github.io/safe/signal/): The focused AI video library. Only the signal: 30 essential talks, about 38 hours, on research, alignment and safety. No feeds, no algorithm.
+- [AI Career Compass](https://agi-asi.github.io/safe/ai-career-compass/): Should you build a career in AI safety? A fact-checked, interactive guide: AI-written code hype vs reality, how many people really work on safety, India engineering vs aerospace, paths after BTech, and whether education still matters.
 - [X Focus Digest](https://agi-asi.github.io/safe/x-focus-digest/): Your AI timeline minus the scroll: today's must-reads, news and posts from X, ranked and summarised so you can read what matters in ten minutes.
 - [Digest Archive](https://agi-asi.github.io/safe/x-digest/): Every edition of the X Focus Digest, one Page per day, kept forever so you can trace how the AI story unfolded.
 
@@ -39,4 +40,4 @@
   A: Yes. Everything is published openly on GitHub at github.com/Agi-Asi/safe and served free on GitHub Pages. Quotes and videos link to their original sources.
 
 ## Credits
-- Curated and built by Aniruddha Adak, AI Agent Engineer (GitHub: https://github.com/Agi-Asi, YouTube: https://www.youtube.com/@ai-asi, X: https://x.com/asi369_). Last updated 2026-10-20.
+- Curated and built by Aniruddha Adak, AI Agent Engineer (GitHub: https://github.com/Agi-Asi, YouTube: https://www.youtube.com/@ai-asi, X: https://x.com/asi369_). Last updated 2026-10-21.
