@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head><meta name="referrer" content="no-referrer">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>X Focus Digest · Wed 21 Oct 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400&display=swap"
+    />
+    <link rel="stylesheet" href="hark.css?v=1792560838" />
+    <link rel="stylesheet" href="hark-hero.css?v=1792560838" />
+    <link rel="stylesheet" href="live.css?v=1792560838" />
+    <style>
+      /* Sticky app bar, modelled on the nav: inverse glass, segmented tabs. */
+      .x-bar {
+        position: sticky;
+        top: calc(env(safe-area-inset-top, 0px) + 12px);
+        z-index: 20;
+        display: grid;
+        gap: 8px;
+        padding: 8px 10px 10px;
+        border-radius: var(--r-l);
+        background: var(--fill-primary);
+        border: 1px solid var(--stroke-primary-on);
+        box-shadow: var(--hark-shadow);
+        color: var(--text-primary-on);
+      }
+      .x-bar :focus-visible { outline-color: var(--fill-primary-on); }
+      .x-bar__row { display: flex; align-items: center; gap: 8px; min-width: 0; }
+      .x-brand { flex: none; font: var(--type-label); padding-inline: 6px 4px; white-space: nowrap; }
+      .x-tabs {
+        display: flex; min-width: 0; overflow-x: auto; scrollbar-width: none;
+        border-radius: var(--r-pill); background: var(--fill-segment);
+      }
+      .x-tabs::-webkit-scrollbar { display: none; }
+      .x-tabs button {
+        flex: none; border: 0; background: none; cursor: pointer;
+        padding: 8px 14px; border-radius: var(--r-pill);
+        font: var(--type-label); color: var(--text-secondary-on); white-space: nowrap;
+      }
+      .x-tabs button:hover { color: var(--text-primary-on); }
+      .x-tabs button[aria-selected="true"] { background: var(--fill-primary-on); color: var(--text-primary); }
+      .x-spacer { flex: 1; }
+      .x-switch {
+        flex: none; display: inline-flex; align-items: center; gap: 8px;
+        border: 1px solid var(--text-secondary-on); background: var(--fill-primary); color: var(--text-primary-on);
+        padding: 6px 10px 6px 12px; border-radius: var(--r-pill); font: var(--type-tag); cursor: pointer;
+        min-height: 36px;
+      }
+      .x-switch__track {
+        width: 30px; height: 18px; border-radius: var(--r-pill); position: relative;
+        background: var(--text-secondary-on); transition: background var(--dur-quick) ease;
+      }
+      .x-switch__track::after {
+        content: ""; position: absolute; top: 2px; left: 2px; width: 14px; height: 14px; border-radius: 50%;
+        background: var(--fill-primary-on); transition: transform var(--dur-quick) var(--ease-out);
+      }
+      .x-switch[aria-checked="true"] .x-switch__track { background: var(--fill-system-green); }
+      .x-switch[aria-checked="true"] .x-switch__track::after { transform: translateX(12px); }
+      .x-progress { display: flex; align-items: center; gap: 10px; padding-inline: 6px; font: var(--type-caption); color: var(--text-secondary-on); }
+      .x-progress__track { flex: 1; height: 4px; border-radius: var(--r-pill); background: var(--hover-wash-primary-on); overflow: hidden; }
+      .x-progress__fill { height: 100%; width: 0; background: var(--fill-system-green); border-radius: inherit; transition: width var(--dur-quick) var(--ease-out); }
+      .x-progress b { color: var(--text-primary-on); font-weight: var(--weight-medium); }
+      @media (max-width: 760px) {
+        .x-bar__row { flex-wrap: wrap; }
+        .x-tabs { order: 3; flex: 1 1 100%; }
+        .x-tabs button { min-height: var(--tap); display: flex; align-items: center; }
+        .x-switch { min-height: var(--tap); }
+      }
+
+      .x-view[hidden] { display: none; }
+      .x-col { width: 100%; max-width: 720px; margin-inline: auto; display: grid; gap: 14px; }
+      .x-view > .section:first-child { border-top: 0; }
+
+      /* Filters, on the grey panel surface. */
+      .x-filters { display: grid; gap: 12px; padding: 16px; border-radius: var(--r-m); background: var(--fill-tertiary); }
+      .x-filters__row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+      .x-filters__label { font: var(--type-tag); color: var(--text-secondary); margin-right: 2px; }
+      .x-seg { display: inline-flex; padding: 3px; gap: 2px; border-radius: var(--r-pill); background: var(--fill-primary-on); border: 1px solid var(--stroke-secondary); }
+      .x-seg button, .x-toggle {
+        border: 0; cursor: pointer; font: var(--type-tag); color: var(--text-secondary);
+        padding: 6px 12px; border-radius: var(--r-pill); background: none; min-height: 30px;
+      }
+      .x-seg button[aria-pressed="true"] { background: var(--fill-primary); color: var(--text-primary-on); }
+      .x-seg button:disabled { cursor: not-allowed; opacity: 0.5; }
+      .x-toggle { background: var(--fill-primary-on); border: 1px solid var(--stroke-primary); color: var(--text-primary); display: inline-flex; gap: 6px; align-items: center; }
+      .x-toggle small { color: var(--text-secondary); font-size: var(--size-caption); }
+      .x-toggle[aria-pressed="true"] { background: var(--fill-primary); color: var(--text-primary-on); border-color: var(--fill-primary); }
+      .x-toggle[aria-pressed="true"] small { color: var(--text-secondary-on); }
+      .x-toggle:disabled { opacity: 0.45; cursor: default; }
+      .x-input, .x-select {
+        font: var(--type-small); color: var(--text-primary); background: var(--fill-primary-on);
+        border: 1px solid var(--stroke-primary); border-radius: var(--r-pill); padding: 7px 14px; min-height: 36px;
+      }
+      .x-input { flex: 1 1 200px; min-width: 0; }
+      .x-count { font: var(--type-caption); color: var(--text-secondary); }
+      @media (pointer: coarse), (max-width: 599px) {
+        .x-seg button, .x-toggle, .x-input, .x-select { min-height: var(--tap); }
+      }
+
+      /* Post card: the grey card surface. */
+      .x-post { display: grid; gap: 12px; padding: 18px 20px; border-radius: var(--r-m); background: var(--fill-tertiary); min-width: 0; }
+      .x-post__head { display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; gap: 10px; align-items: center; }
+      .x-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--stroke-primary); object-fit: cover; }
+      .x-who { min-width: 0; display: grid; }
+      .x-who b { font: var(--type-body-strong); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+      .x-who span { font: var(--type-caption); color: var(--text-secondary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+      .x-tags { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; align-items: center; }
+      .x-text { font-size: var(--size-prose); line-height: 1.45; white-space: pre-wrap; overflow-wrap: anywhere; }
+      .x-text a { color: var(--text-primary); text-decoration: underline; text-decoration-color: var(--stroke-primary); text-underline-offset: 3px; }
+      .x-text a:hover { text-decoration-color: currentColor; }
+      @media (max-width: 599px) {
+        .x-text a { display: inline-flex; align-items: center; min-width: var(--tap); min-height: var(--tap); margin: -13px 0; vertical-align: middle; }
+      }
+      .x-stats { display: flex; flex-wrap: wrap; gap: 4px 16px; font: var(--type-caption); color: var(--text-secondary); font-variant-numeric: tabular-nums; }
+      .x-stats b { color: var(--text-primary); font-weight: var(--weight-medium); }
+      .x-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+      .x-actions button.btn { cursor: pointer; }
+
+      .x-media { display: grid; gap: 8px; grid-template-columns: minmax(0, 1fr); }
+      .x-media--multi { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .x-media figure { margin: 0; display: grid; gap: 6px; justify-items: start; min-width: 0; }
+      .x-media__frame { position: relative; width: 100%; border-radius: var(--r-s); overflow: hidden; background: var(--fill-primary-on); }
+      .x-media__frame img, .x-media__frame video { width: 100%; max-height: 520px; object-fit: contain; display: block; background: var(--fill-primary-on); }
+      .x-media--multi .x-media__frame img { aspect-ratio: 1; object-fit: cover; max-height: none; }
+      .x-dur { position: absolute; left: 8px; top: 8px; padding: 1px 8px; border-radius: var(--r-pill); background: var(--hero-glass); color: var(--hero-text); font: var(--type-tag); pointer-events: none; }
+
+      .x-quote { display: grid; gap: 8px; padding: 12px 14px; border-radius: var(--r-s); border: 1px solid var(--stroke-primary); background: var(--fill-primary-on); min-width: 0; }
+      .x-quote .x-post__head { grid-template-columns: 24px minmax(0, 1fr); gap: 8px; }
+      .x-quote .x-avatar { width: 24px; height: 24px; }
+      .x-quote .x-who { display: flex; gap: 6px; align-items: baseline; }
+      .x-quote .x-who b { font: var(--type-label); }
+      .x-quote .x-text { font-size: var(--size-small); line-height: 1.4; }
+
+      .x-thread { display: grid; gap: 0; }
+      .x-thread[hidden] { display: none; }
+      .x-tpost { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 10px; padding-bottom: 14px; position: relative; }
+      .x-tpost::before { content: ""; position: absolute; left: 19px; top: 44px; bottom: 2px; width: 2px; border-radius: 2px; background: var(--stroke-primary); }
+      .x-tpost__body { display: grid; gap: 8px; min-width: 0; }
+      .x-tpost .x-who { display: flex; gap: 6px; align-items: baseline; }
+      .x-tpost .x-text { font-size: var(--size-body); }
+
+      .x-strip { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: var(--r-m); border: 1px solid var(--stroke-secondary); color: var(--text-secondary); font: var(--type-small); min-width: 0; }
+      .x-strip::before { content: ""; flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--fill-system-green); }
+      .x-strip span { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+      .x-strip b { color: var(--text-primary); font-weight: var(--weight-medium); }
+      .x-strip button { cursor: pointer; flex: none; }
+
+      .x-end { text-align: center; padding: 28px 20px; border: 1.5px dashed var(--stroke-primary); border-radius: var(--r-m); display: grid; gap: 6px; justify-items: center; }
+      .x-end p:first-child { font: var(--type-heading); }
+      .x-end p + p { font: var(--type-small); color: var(--text-secondary); }
+      .x-more { justify-self: center; cursor: pointer; }
+      .x-empty { font: var(--type-small); color: var(--text-secondary); padding: 8px 2px; }
+
+      .x-story { display: grid; gap: 14px; padding: 22px; border-radius: var(--r-l); border: 1px solid var(--stroke-primary); }
+      .x-story h2 { font: var(--type-heading); }
+      .x-story__meta { font: var(--type-caption); color: var(--text-secondary); }
+      .x-story__sum { font-size: var(--size-prose); line-height: 1.45; max-width: 68ch; }
+      .x-story__posts { display: grid; gap: 12px; }
+      @media (max-width: 599px) {
+        .x-post { padding: 16px; }
+        .x-story { padding: 16px; }
+        .x-post__head { grid-template-columns: 40px minmax(0, 1fr); }
+        .x-tags { grid-column: 1 / -1; justify-content: flex-start; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page" id="top">
+      <header class="x-bar" aria-label="Digest controls">
+        <div class="x-bar__row">
+          <span class="x-brand">X Focus Digest</span>
+          <div class="x-tabs" role="tablist" aria-label="Views">
+            <button role="tab" id="tab-brief" aria-controls="view-brief" aria-selected="true" data-tab="brief">Brief</button>
+            <button role="tab" id="tab-news" aria-controls="view-news" aria-selected="false" data-tab="news">Today's News</button>
+            <button role="tab" id="tab-foryou" aria-controls="view-foryou" aria-selected="false" data-tab="foryou">For You</button>
+            <button role="tab" id="tab-following" aria-controls="view-following" aria-selected="false" data-tab="following">Following</button>
+          </div>
+          <span class="x-spacer"></span>
+          <button class="x-switch" id="focus" role="switch" aria-checked="false" type="button">
+            <span class="x-switch__track" aria-hidden="true"></span>Focus mode
+          </button>
+          <button class="theme-btn" id="theme-btn" type="button" aria-label="Switch to light theme"></button>
+        </div>
+        <div class="x-progress" aria-live="polite">
+          <span id="prog-text"><b>0</b> of 0 read</span>
+          <div class="x-progress__track" aria-hidden="true"><div class="x-progress__fill" id="prog-fill"></div></div>
+        </div>
+      </header>
+
+      <main class="main">
+        <div class="x-view" id="view-brief" role="tabpanel" aria-labelledby="tab-brief">
+          <section class="hero">
+            <div class="hero__copy">
+              <p class="hero__eyebrow">Wed 21 Oct 2026 · @asi369_</p>
+              <h1>Your X, minus the scroll</h1>
+              <p class="hero__sub">Read what matters in 10 minutes, then close it.</p>
+              <p class="hero__meta">For Aniruddha · AI agent engineer and AI filmmaker · last 24 hours to 11:03 AM IST</p>
+            </div>
+            <aside class="callout" aria-label="Start here">
+              <p class="callout__head"><span class="hark-mark" data-size="16"></span> Start here</p>
+              <p class="callout__lead"><strong>Eight must-reads, then you're done.</strong> Mark each one Done as you go.</p>
+              <a class="btn" href="#top8">Jump to must-reads</a>
+            </aside>
+          </section>
+          <section class="stats" aria-label="What was captured">
+            <div class="stat"><span class="stat__fig" id="n-news">64</span><span class="stat__label">News stories</span></div>
+            <div class="stat"><span class="stat__fig" id="n-foryou">1914</span><span class="stat__label">For you posts</span></div>
+            <div class="stat"><span class="stat__fig" id="n-following">707</span><span class="stat__label">Following posts</span></div>
+            <div class="stat"><span class="stat__fig" id="n-must">–</span><span class="stat__label">Must-reads, both feeds</span></div>
+          </section>
+          <section class="section" id="sixty">
+            <div class="head">
+              <p class="head__eyebrow">Today in 60 seconds</p>
+              <h2>DeepSeek open-sourced the engine behind V4.1-Flash, while Anthropic&#x27;s leaked draft S-1 showed $16.3B in revenue and an $80.7B loss</h2>
+            </div>
+            <div class="cards">
+              <div>
+                <ul><li>DeepSeek open-sourced DeepInfer (Apache 2.0), the inference engine that serves DeepSeek-V4.1-Flash in production. It runs on NVIDIA SM100 and Huawei Ascend 950, but it&#x27;s offline inference only: the KV-cache system and load balancing aren&#x27;t included. Most-liked AI post of the day (~35.6K likes). Verified by TechTarget, The New Stack and others.</li><li>Anthropic&#x27;s draft IPO filing (WSJ): H1 2026 revenue of $16.3B (vs $1.1B a year earlier) and an $80.7B net loss, $72B of it non-cash convertible-note charges. Up to $750B in future compute spending. Bloomberg separately reports talks on a second ~$45B Nscale compute deal (not final). Verified.</li><li>New open-weight models and speed-ups: Ornith-1.5-122B MoE (claims frontier-level and fast on a single DGX, free for 48h on Nous&#x27; Hermes Agent, SGLang day-0); EAGLE-4 speculative decoding (claims 961.6 tok/s on Qwen3.8-27B on one B300). Both are the makers&#x27; own numbers.</li><li>Voice and audio stack: ElevenLabs Eleven Realtime v1 Mini/Max (end-to-end voice agents), Mistral Voxtral 3 (STT + TTS + voice agent SDK, 50+ languages, self-hostable), Gradium Phonon (open TTS under 50M params, Apache 2.0, runs on-device), Underdog Bark 3.0 (163 MB).</li><li>For AI filmmakers: FastH3 Omni was open-sourced (distilled MiniMax H3, 5–15 s text-to-video with audio, up to 9 references). Krea 3 hit #4 on Artificial Analysis image editing, Bria Fibo 2.0 (8B, licensed data) tops AA-Image-Editing v2.1, and earshot v0.3 adds 201 code-made sounds plus frame-accurate SFX timing.</li><li>Agent and dev tools: Anthropic&#x27;s OSS Scanner gives critical open-source projects free periodic vulnerability scans with PoCs and patches. OpenAI added 12-hour prompt caching for persistent agents. Beacon (open source, $5.5M seed) shares memory across Claude Code, Cursor and Codex. tsrs is a Rust port of the TypeScript compiler, claimed up to 8x faster.</li><li>Money: Daytona (agent sandboxes) raised $60M Series B at a $1B valuation, Eka Robotics raised $150M at $1.45B, an agents-web-API startup raised $9M, and OpenAI bought Orchestra Bio. Policy: DHS ordered US civilian agencies to remove DeepSeek products.</li><li>Hype filter: &#x27;Odisha founder beats GPT-6 Astra&#x27;, &#x27;Neuralink cures blindness in 6–12 months&#x27;, &#x27;ChatGPT secretly profiles you&#x27; and the many &#x27;Opus 5.5 replaced After Effects / made me $50K&#x27; threads are unverified engagement bait. Treat them as noise.</li></ul>
+              </div>
+            </div>
+          </section>
+          <section class="section" id="top8">
+            <div class="head">
+              <p class="head__eyebrow">Top 8 must-reads</p>
+              <h2>The posts worth your time, from both feeds.</h2>
+              <p class="head__sub">Ranked by importance, duplicates removed.</p>
+            </div>
+            <div class="x-col" id="list-brief"></div>
+          </section>
+        </div>
+
+        <div class="x-view" id="view-news" role="tabpanel" aria-labelledby="tab-news" hidden>
+          <section class="section">
+            <div class="head">
+              <p class="head__eyebrow">Today's News</p>
+              <h2>Five stories trending on X, with the posts behind them.</h2>
+            </div>
+            <div class="x-col" id="list-news"></div>
+          </section>
+        </div>
+
+        <div class="x-view" id="view-foryou" role="tabpanel" aria-labelledby="tab-foryou" hidden>
+          <section class="section">
+            <div class="head">
+              <p class="head__eyebrow">For You</p>
+              <h2>The algorithm's picks, sorted by what matters.</h2>
+            </div>
+            <div class="x-col">
+              <div class="x-filters" data-feed="foryou"></div>
+              <div id="list-foryou" class="x-col"></div>
+            </div>
+          </section>
+        </div>
+
+        <div class="x-view" id="view-following" role="tabpanel" aria-labelledby="tab-following" hidden>
+          <section class="section">
+            <div class="head">
+              <p class="head__eyebrow">Following</p>
+              <h2>The people you chose, sorted by what matters.</h2>
+            </div>
+            <div class="x-col">
+              <div class="x-filters" data-feed="following"></div>
+              <div id="list-following" class="x-col"></div>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <footer class="foot">
+        <p>Captured from @asi369_ over the 24 hours to Wed 21 Oct 2026, 11 AM IST · media via direct X CDN links</p>
+        <a class="badge" href="https://agi-asi.github.io/safe/" rel="author"><span>SAFE · by Aniruddha Adak</span></a>
+      </footer>
+    </div>
+    <script src="d0.js"></script><script src="d1.js"></script><script src="d2.js"></script><script src="d3.js"></script><script src="d4.js"></script><script src="d5.js"></script><script src="d6.js"></script><script src="d7.js"></script><script src="d8.js"></script><script src="d9.js"></script><script src="d10.js"></script><script src="d11.js"></script><script src="d12.js"></script><script src="d13.js"></script><script src="d14.js"></script><script src="d15.js"></script><script src="d16.js"></script><script src="d17.js"></script><script src="d18.js"></script><script src="d19.js"></script><script src="d20.js"></script><script src="d21.js"></script><script src="d22.js"></script><script src="d23.js"></script><script src="d24.js"></script><script src="d25.js"></script><script src="d26.js"></script><script src="d27.js"></script><script src="d28.js"></script><script src="d29.js"></script><script src="d30.js"></script><script src="d31.js"></script><script src="d32.js"></script><script src="d33.js"></script><script src="d34.js"></script><script src="d35.js"></script><script src="d36.js"></script><script src="d37.js"></script><script src="d38.js"></script><script src="d39.js"></script><script src="d40.js"></script><script src="d41.js"></script><script src="d42.js"></script><script src="d43.js"></script><script src="d44.js"></script><script src="d45.js"></script><script src="d46.js"></script><script src="d47.js"></script><script src="d48.js"></script><script src="d49.js"></script><script src="d50.js"></script><script src="d51.js"></script><script src="d52.js"></script><script src="d53.js"></script><script src="d54.js"></script><script src="d55.js"></script><script src="d56.js"></script><script src="d57.js"></script><script src="d58.js"></script>
+    <script src="hark.js?v=1792560838"></script>
+    <script src="s0.js?v=1792560838"></script>
+    <script src="live.js?v=1792560838"></script>
+  <script src="/safe/safe-gh.js" defer></script></body>
+</html>
