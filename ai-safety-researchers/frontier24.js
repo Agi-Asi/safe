@@ -137,7 +137,8 @@
       var d = doc.createElement("p"); d.className = "x24-badges";
       d.innerHTML = (p.ptf ? '<a class="ptf-tag" href="#pacing" title="Signed as: ' + esc(p.ptf.title) + '">Signed Pacing the Frontier</a>' : "") +
         (p.frominside ? '<a class="ptf-tag" href="#frominside">From Inside interview</a>' : "") +
-        (p.photo_kind === "avatar" ? '<span class="ptf-tag" title="No verified photo of this person is public; this is their own profile avatar.">Picture is their avatar</span>' : "");
+        (p.photo_kind === "avatar" ? '<span class="ptf-tag" title="No verified photo of this person is public; this is their own profile avatar.">Picture is their avatar</span>' : +
+        (p.photo_kind === "single" ? '<span class="ptf-tag" title="This photo comes from one official page (their own site or employer) and could not be matched on a second source.">Photo from one official source</span>' : "");
       body.insertBefore(d, body.firstChild);
     }
     win.X24badge = badge;
