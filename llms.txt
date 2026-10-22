@@ -1,9 +1,9 @@
 # SAFE
 
-> SAFE (https://agi-asi.github.io/safe/) is an open hub by Aniruddha Adak (Kolkata, India) on AI safety, AI alignment, interpretability, superintelligence and the technological singularity. It gathers 173 researcher profiles with verbatim sourced quotes, curated films and video libraries, and a daily AI news digest. Source: https://github.com/Agi-Asi/safe
+> SAFE (https://agi-asi.github.io/safe/) is an open hub by Aniruddha Adak (Kolkata, India) on AI safety, AI alignment, interpretability, superintelligence and the technological singularity. It gathers 527 researcher profiles with verbatim sourced quotes, curated films and video libraries, and a daily AI news digest. Source: https://github.com/Agi-Asi/safe
 
 ## Sections
-- [The Guardians of AI](https://agi-asi.github.io/safe/ai-safety-researchers/): Who's who of AI safety and alignment: 173 researchers and public voices, 776 verbatim sourced quotes, 807 interviews and 688 verified videos, fact-checked.
+- [The Guardians of AI](https://agi-asi.github.io/safe/ai-safety-researchers/): Who's who of AI safety and alignment: 527 researchers and public voices, 1,044 verbatim sourced quotes, 1,143 interviews and 1,461 verified videos, fact-checked.
 - [Inside the Insiders](https://agi-asi.github.io/safe/frominside/): Who to trust on frominside.ai: the lab insiders interviewed by Palisade Research, with fact-checks, answers, motion explainers and side-by-side comparisons.
 - [CONTROL](https://agi-asi.github.io/safe/control-superintelligence/): Inside the race to keep superintelligence on our side. Twelve insiders from OpenAI, Google DeepMind and Anthropic on the real odds of losing control.
 - [AI Safety Cinema](https://agi-asi.github.io/safe/ai-safety-cinema/): The most important conversation of our century, as a cinema. Watch, understand, decide: curated documentaries, debates and talks on AI risk.
@@ -28,7 +28,7 @@
 - Q: What is SAFE?
   A: SAFE is an open, free hub by Aniruddha Adak that gathers the people, research, films, videos and daily news of AI safety, alignment and superintelligence into one place, so anyone can understand the most important technology debate of our time.
 - Q: Who are the most influential AI safety researchers?
-  A: The Guardians of AI atlas profiles 173 of them, including Geoffrey Hinton, Yoshua Bengio, Stuart Russell, Paul Christiano, Chris Olah, Jan Leike, Neel Nanda, Ajeya Cotra and Helen Toner, with verbatim sourced quotes and verified interviews for each.
+  A: The Guardians of AI atlas profiles 527 of them, including Geoffrey Hinton, Yoshua Bengio, Stuart Russell, Paul Christiano, Chris Olah, Jan Leike, Neel Nanda, Ajeya Cotra and Helen Toner, with verbatim sourced quotes and verified interviews for each.
 - Q: What is the difference between AI safety and AI alignment?
   A: AI safety is the broad field of preventing harm from AI, from everyday failures to catastrophic risk. Alignment is one core part of it: making sure an AI system genuinely pursues the goals people intend.
 - Q: What is superintelligence and why does it worry researchers?
